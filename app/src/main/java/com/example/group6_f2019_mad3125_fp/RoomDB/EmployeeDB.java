@@ -6,10 +6,12 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 
-@Database(entities = Employee.class , exportSchema = false , version = 2)
+@Database(entities = Employee.class , exportSchema = false , version = 1)
+@TypeConverters({EmpVehicleTypeConverter.class})
 public abstract class EmployeeDB extends RoomDatabase
 {
 

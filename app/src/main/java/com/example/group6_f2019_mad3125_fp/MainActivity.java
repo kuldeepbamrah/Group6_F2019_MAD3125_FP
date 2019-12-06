@@ -2,6 +2,7 @@ package com.example.group6_f2019_mad3125_fp;
 
 import android.os.Bundle;
 
+import com.example.group6_f2019_mad3125_fp.JSONParser.JsonParser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -20,14 +21,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    String json = new String();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
+
+
+        //getting Initial data fro Json
+        JsonParser jsonParser = new JsonParser();
+        json = jsonParser.loadJSONFromAsset(MainActivity.this);
+
+        if(json!=null)
+        {
+            Toast.makeText(MainActivity.this,"json read successful",Toast.LENGTH_LONG).show();
+        }
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -66,4 +83,8 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+
+
 }

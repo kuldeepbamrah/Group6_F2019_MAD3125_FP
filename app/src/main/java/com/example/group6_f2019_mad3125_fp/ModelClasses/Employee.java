@@ -1,6 +1,7 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -70,6 +71,7 @@ public class Employee {
      * @param hoursWorked
 
      */
+    @Ignore
     public Employee(Integer id, String name, Integer age, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount) {
         super();
         this.id = id;

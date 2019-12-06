@@ -1,5 +1,7 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
+import androidx.room.Ignore;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -40,6 +42,7 @@ public class Vehicle {
      * @param type
      * @param make
      */
+    @Ignore
     public Vehicle(Integer id, String make, String plate, String model, Boolean insurance, String type) {
         super();
         this.id = id;
