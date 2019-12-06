@@ -39,12 +39,6 @@ public class MainActivity extends AppCompatActivity {
     String temps;
     List<Employee> myarraylist;
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
