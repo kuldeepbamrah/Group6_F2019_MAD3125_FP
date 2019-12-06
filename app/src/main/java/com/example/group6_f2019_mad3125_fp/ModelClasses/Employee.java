@@ -68,14 +68,14 @@ public class Employee {
      * @param salary
      * @param age
      * @param hoursWorked
-     * @param vehicle
+
      */
-    public Employee(Integer id, String name, Integer age, Vehicle vehicle, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount) {
+    public Employee(Integer id, String name, Integer age, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount) {
         super();
         this.id = id;
         this.name = name;
         this.age = age;
-        this.vehicle = vehicle;
+        this.vehicle = null;
         this.schoolName = schoolName;
         this.type = type;
         this.salary = salary;
@@ -109,11 +109,11 @@ public class Employee {
         this.age = age;
     }
 
-    public Vehicle getVehicle() {
+    public List<Vehicle> getVehicle() {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicle(List<Vehicle> vehicle) {
         this.vehicle = vehicle;
     }
 
