@@ -37,7 +37,7 @@
             android:background="@drawable/blue_border_rounded_cornwe">
 
             <!-- INPUT -->
-            <androidx.appcompat.widget.AppCompatTextView
+            <EditText
                 android:id="@+id/username_input"
                 android:layout_toRightOf="@+id/username_icon"
                 android:hint="Email"
@@ -76,7 +76,7 @@
             android:background="@drawable/blue_border_rounded_cornwe">
 
             <!-- INPUT -->
-            <androidx.appcompat.widget.AppCompatTextView
+            <EditText
                 android:id="@+id/pass"
                 android:layout_toRightOf="@+id/icon"
                 android:hint="Password"
