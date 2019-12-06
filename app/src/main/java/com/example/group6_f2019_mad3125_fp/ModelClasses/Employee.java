@@ -1,13 +1,17 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+@Entity(tableName = "employee")
 public class Employee {
 
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
     private Integer id;
