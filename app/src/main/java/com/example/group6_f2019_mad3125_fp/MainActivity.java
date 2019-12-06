@@ -3,6 +3,8 @@ package com.example.group6_f2019_mad3125_fp;
 import android.os.Bundle;
 
 import com.example.group6_f2019_mad3125_fp.JSONParser.JsonParser;
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -14,6 +16,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -23,10 +26,17 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     String json = new String();
+    String temps;
+    List<Employee> myarraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +50,32 @@ public class MainActivity extends AppCompatActivity {
         if(json!=null)
         {
             Toast.makeText(MainActivity.this,"json read successful",Toast.LENGTH_LONG).show();
+            final EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+            final Integer count = employeeDB.daoObjct().count();
+            if(count == 0)
+            {
+                Gson gson = new Gson();
+
+                try {
+                    JSONArray jsonarray = new JSONArray(json);
+
+                    for(int i =0 ; i<=jsonarray.length();i++)
+                    {
+
+                        temps = jsonarray.get(i).toString();
+                        Employee employee = gson.fromJson(temps,Employee.class);
+                        employeeDB.daoObjct().insert(employee);
+
+                    }
+                }catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+                //end of data from json
+
+            }
+
+            myarraylist = employeeDB.daoObjct().getUserDetails();
         }
         //json data end
 

@@ -20,7 +20,9 @@ public interface EmployeeDao {
 
     @Update
     void update(Employee employee);
+    @Query("Select count(id) from employee")
+    Integer count();
 
     @Query("Select * from employee")
-    LiveData<List<Employee>> getUserDetails();
+    List<Employee> getUserDetails();
 }

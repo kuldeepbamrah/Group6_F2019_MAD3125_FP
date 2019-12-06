@@ -5,7 +5,7 @@
         "id": 1,
         "name": "Mitali",
         "age": 21,
-        "vehicle": {
+        "vehicle": [{
             "@class": "ca.lambton.payroll.vehicle.Motorcycle",
             "id": 0,
             "make": "Honda",
@@ -13,7 +13,7 @@
             "model": "MODEL 1",
             "insurance": true,
             "type": "Motorcycle"
-        },
+        }],
         "schoolName": "Lambton College",
         "type": "Intern"
     },
@@ -22,7 +22,7 @@
         "id": 2,
         "name": "Pritesh",
         "age": 35,
-        "vehicle": {
+        "vehicle": [{
             "@class": "ca.lambton.payroll.vehicle.Car",
             "id": 0,
             "make": "BMW",
@@ -30,7 +30,7 @@
             "model": "MODEL 2",
             "insurance": true,
             "type": "Car"
-        },
+        }],
         "salary": 8500.0,
         "bonus": 300.0,
         "type": "FullTime"
@@ -40,7 +40,7 @@
         "id": 3,
         "name": "Akshdeep kaur",
         "age": 24,
-        "vehicle": {
+        "vehicle": [{
             "@class": "ca.lambton.payroll.vehicle.Motorcycle",
             "id": 0,
             "make": "YAMATO",
@@ -48,7 +48,7 @@
             "model": "MODEL 3",
             "insurance": true,
             "type": "Motorcycle"
-        },
+        }],
         "rate": 20.0,
         "hoursWorked": 165,
         "fixedAmount": 130.0,
