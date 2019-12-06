@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='Group6_F2019_MAD3125_FP'
