@@ -8,6 +8,9 @@ import com.google.gson.annotations.SerializedName;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 @Entity(tableName = "employee")
 public class Employee {
 
@@ -23,7 +26,7 @@ public class Employee {
     private Integer age;
     @SerializedName("vehicle")
     @Expose
-    private Vehicle vehicle;
+    private List<Vehicle> vehicle;
     @SerializedName("schoolName")
     @Expose
     private String schoolName;
