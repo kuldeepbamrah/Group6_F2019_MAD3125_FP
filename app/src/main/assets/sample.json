@@ -1,0 +1,68 @@
+
+[
+    {
+        "@class": "ca.lambton.payroll.employee.Intern",
+        "id": 1,
+        "name": "Mitali",
+        "age": 21,
+        "vehicle": {
+            "@class": "ca.lambton.payroll.vehicle.Motorcycle",
+            "id": 0,
+            "make": "Honda",
+            "plate": "ABCD-123 ",
+            "model": "MODEL 1",
+            "insurance": true,
+            "type": "Motorcycle"
+        },
+        "schoolName": "Lambton College",
+        "type": "Intern"
+    },
+    {
+        "@class": "ca.lambton.payroll.employee.FullTime",
+        "id": 2,
+        "name": "Pritesh",
+        "age": 35,
+        "vehicle": {
+            "@class": "ca.lambton.payroll.vehicle.Car",
+            "id": 0,
+            "make": "BMW",
+            "plate": "EFGH-123 ",
+            "model": "MODEL 2",
+            "insurance": true,
+            "type": "Car"
+        },
+        "salary": 8500.0,
+        "bonus": 300.0,
+        "type": "FullTime"
+    },
+    {
+        "@class": "ca.lambton.payroll.employee.FixedBasedPartTime",
+        "id": 3,
+        "name": "Akshdeep kaur",
+        "age": 24,
+        "vehicle": {
+            "@class": "ca.lambton.payroll.vehicle.Motorcycle",
+            "id": 0,
+            "make": "YAMATO",
+            "plate": "EFGH-875 ",
+            "model": "MODEL 3",
+            "insurance": true,
+            "type": "Motorcycle"
+        },
+        "rate": 20.0,
+        "hoursWorked": 165,
+        "fixedAmount": 130.0,
+        "type": "PartTime / Fixed Amount"
+    },
+    {
+        "@class": "ca.lambton.payroll.employee.CommissionBasedPartTime",
+        "id": 4,
+        "name": "Seongyeob",
+        "age": 29,
+        "vehicle": null,
+        "rate": 40.0,
+        "hoursWorked": 178,
+        "commissionPercent": 20,
+        "type": "PartTime / Commissioned"
+    }
+]
