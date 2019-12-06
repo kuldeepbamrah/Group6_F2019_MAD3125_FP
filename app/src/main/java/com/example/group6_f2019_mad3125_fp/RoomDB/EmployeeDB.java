@@ -28,5 +28,5 @@ public abstract class EmployeeDB extends RoomDatabase
     }
 
 
-    public abstract DataAccessObjectInterface daoObjct();
+    public abstract EmployeeDao daoObjct();
 }
