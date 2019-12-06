@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
 
 
@@ -44,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(MainActivity.this,"json read successful",Toast.LENGTH_LONG).show();
         }
+        //json data end
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);

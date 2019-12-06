@@ -14,14 +14,14 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.group6_f2019_mad3125_fp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:label="@string/menu_listemp"
+        tools:layout="@layout/fragment_employeelist" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.group6_f2019_mad3125_fp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_addemployee" />
 
     <fragment
         android:id="@+id/nav_tools"
