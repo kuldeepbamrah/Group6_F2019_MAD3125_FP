@@ -33,7 +33,10 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else
                 {
-
+                    MaterialDialog(this).show {
+                    title(R.string.your_title)
+                    message(R.string.your_message)
+                }
                 }
             }
         });
