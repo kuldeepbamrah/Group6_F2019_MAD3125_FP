@@ -1,9 +1,10 @@
-package com.example.group6_f2019_mad3125_fp;
+package com.example.group6_f2019_mad3125_fp.Activities;
 
 import android.os.Bundle;
 
 import com.example.group6_f2019_mad3125_fp.JSONParser.JsonParser;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
+import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;

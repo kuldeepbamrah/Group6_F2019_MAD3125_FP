@@ -2,8 +2,6 @@ package com.example.group6_f2019_mad3125_fp.JSONParser;
 
 import android.content.Context;
 
-import com.example.group6_f2019_mad3125_fp.MainActivity;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;

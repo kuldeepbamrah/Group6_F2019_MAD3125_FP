@@ -30,11 +30,7 @@ public class GalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 
-
-
-
         View view = inflater.inflate(R.layout.fragment_employeelist,container,false);
-
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         CustomerDataAdapter customerDataAdapter = new CustomerDataAdapter(getContext());
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
