@@ -3,6 +3,9 @@ package com.example.group6_f2019_mad3125_fp.ModelClasses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Employee {
 
     @SerializedName("id")
@@ -23,6 +26,21 @@ public class Employee {
     @SerializedName("type")
     @Expose
     private String type;
+    @SerializedName("salary")
+    @Expose
+    private Double salary;
+    @SerializedName("bonus")
+    @Expose
+    private Double bonus;
+    @SerializedName("rate")
+    @Expose
+    private Double rate;
+    @SerializedName("hoursWorked")
+    @Expose
+    private Integer hoursWorked;
+    @SerializedName("fixedAmount")
+    @Expose
+    private Double fixedAmount;
 
     /**
      * No args constructor for use in serialization
@@ -33,14 +51,19 @@ public class Employee {
 
     /**
      *
+     * @param rate
+     * @param bonus
      * @param name
      * @param id
+     * @param fixedAmount
      * @param schoolName
      * @param type
+     * @param salary
      * @param age
+     * @param hoursWorked
      * @param vehicle
      */
-    public Employee(Integer id, String name, Integer age, Vehicle vehicle, String schoolName, String type) {
+    public Employee(Integer id, String name, Integer age, Vehicle vehicle, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount) {
         super();
         this.id = id;
         this.name = name;
@@ -48,6 +71,11 @@ public class Employee {
         this.vehicle = vehicle;
         this.schoolName = schoolName;
         this.type = type;
+        this.salary = salary;
+        this.bonus = bonus;
+        this.rate = rate;
+        this.hoursWorked = hoursWorked;
+        this.fixedAmount = fixedAmount;
     }
 
     public Integer getId() {
@@ -96,6 +124,46 @@ public class Employee {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public Double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Double bonus) {
+        this.bonus = bonus;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public Integer getHoursWorked() {
+        return hoursWorked;
+    }
+
+    public void setHoursWorked(Integer hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
+    public Double getFixedAmount() {
+        return fixedAmount;
+    }
+
+    public void setFixedAmount(Double fixedAmount) {
+        this.fixedAmount = fixedAmount;
     }
 
 }
