@@ -16,9 +16,12 @@ import com.example.group6_f2019_mad3125_fp.R;
 
 public class HomeFragment extends Fragment {
 
-
+TextView numberemp;
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, Bundle savedInstanceState)
+    {
+        
         return super.onCreateView(inflater, container, savedInstanceState);
+
     }
 }
