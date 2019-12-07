@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.group6_f2019_mad3125_fp.ui.gallery.GalleryFragment"
+        android:name="com.example.group6_f2019_mad3125_fp.ui.ListOfEmployee.ListOfEmployeeFragment"
         android:label="@string/menu_employyelist"
         tools:layout="@layout/fragment_employeelist" />
 
@@ -25,13 +25,13 @@
 
     <fragment
         android:id="@+id/nav_help"
-        android:name="com.example.group6_f2019_mad3125_fp.ui.tools.ToolsFragment"
+        android:name="com.example.group6_f2019_mad3125_fp.ui.help.HelpFragment"
         android:label="@string/menu_help"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_logout"
-        android:name="com.example.group6_f2019_mad3125_fp.ui.share.ShareFragment"
+        android:name="com.example.group6_f2019_mad3125_fp.ui.logout.LogOutFragment"
         android:label="@string/menu_logout"
         tools:layout="@layout/fragment_share" />
 
