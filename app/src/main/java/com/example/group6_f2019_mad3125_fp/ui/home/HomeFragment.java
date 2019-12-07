@@ -13,15 +13,21 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 public class HomeFragment extends Fragment {
 
 TextView numberemp;
+Integer empcount;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
     {
-        
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
+        empcount = employeeDB.daoObjct().count();
+        numberemp = view.findViewById(R.id.textView4);
+        numberemp.setText(String.valueOf(empcount));
+        return view;
 
     }
 }

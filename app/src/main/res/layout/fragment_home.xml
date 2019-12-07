@@ -7,21 +7,24 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="148dp"
-        android:layout_height="146dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.119"
+        app:layout_constraintVertical_bias="0.13"
         app:srcCompat="@color/lightcolor" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="135dp"
-        android:layout_height="111dp"
-        android:text="TextView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:text="00"
+        android:textSize="70dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,9 +34,11 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="144dp"
-        android:layout_height="30dp"
-        android:text="Number Of Employees"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number Of Total Employees"
+        android:textColor="@color/colorPrimary"
+        android:padding="10dp"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
