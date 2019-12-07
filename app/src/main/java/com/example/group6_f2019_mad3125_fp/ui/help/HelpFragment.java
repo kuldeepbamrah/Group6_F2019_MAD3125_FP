@@ -19,7 +19,7 @@ public class HelpFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return null;
+        return super.onCreateView(inflater, container, savedInstanceState);
 
             }
 
