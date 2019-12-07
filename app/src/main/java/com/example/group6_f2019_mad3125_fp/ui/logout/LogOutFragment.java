@@ -12,14 +12,17 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.R;
 
 public class LogOutFragment extends Fragment {
 
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        CustomDialog customDialog = new CustomDialog();
+        customDialog.showDialog(getActivity(),"Are you sure you want to Log Out?");
+        getActivity().finish();
+        return null;
     }
 }
