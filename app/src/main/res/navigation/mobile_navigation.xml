@@ -24,20 +24,15 @@
         tools:layout="@layout/fragment_addemployee" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_help"
         android:name="com.example.group6_f2019_mad3125_fp.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/menu_help"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
-        android:id="@+id/nav_share"
+        android:id="@+id/nav_logout"
         android:name="com.example.group6_f2019_mad3125_fp.ui.share.ShareFragment"
-        android:label="@string/menu_share"
+        android:label="@string/menu_logout"
         tools:layout="@layout/fragment_share" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.group6_f2019_mad3125_fp.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>
