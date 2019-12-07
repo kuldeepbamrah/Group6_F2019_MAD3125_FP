@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,23 +26,25 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.username_input);
         pass = findViewById(R.id.pass);
 
-        pass.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(username.getText().toString().equals("user@employee.com") && pass.getText().toString().equals("s3cr3t"))
                 {
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
-                }else
-                {
-                    MaterialDialog(this).show {
-                    title(R.string.your_title)
-                    message(R.string.your_message)
+                }
+               // else if(username.getText().toString().equals("") && pass.getText().toString().equals(""))
+                else
+                    {
+                    CustomDialog mydialog = new CustomDialog();
+                    mydialog.showDialog(LoginActivity.this,"Please enter correct values");
+                    Toast.makeText(LoginActivity.this,"sdfs",Toast.LENGTH_SHORT).show();
                 }
                 }
-            }
-        });
+            });
+        }
 
 
     }
-}
+
