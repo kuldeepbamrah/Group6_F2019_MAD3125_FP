@@ -1,11 +1,14 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Ignore;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Vehicle {
+public class Vehicle implements Parcelable {
 
     @SerializedName("id")
     @Expose
@@ -52,6 +55,52 @@ public class Vehicle {
         this.insurance = insurance;
         this.type = type;
     }
+
+    protected Vehicle(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        make = in.readString();
+        plate = in.readString();
+        model = in.readString();
+        byte tmpInsurance = in.readByte();
+        insurance = tmpInsurance == 0 ? null : tmpInsurance == 1;
+        type = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(make);
+        dest.writeString(plate);
+        dest.writeString(model);
+        dest.writeByte((byte) (insurance == null ? 0 : insurance ? 1 : 2));
+        dest.writeString(type);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Vehicle> CREATOR = new Creator<Vehicle>() {
+        @Override
+        public Vehicle createFromParcel(Parcel in) {
+            return new Vehicle(in);
+        }
+
+        @Override
+        public Vehicle[] newArray(int size) {
+            return new Vehicle[size];
+        }
+    };
 
     public Integer getId() {
         return id;

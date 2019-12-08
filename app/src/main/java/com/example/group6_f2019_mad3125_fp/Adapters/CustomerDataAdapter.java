@@ -3,6 +3,7 @@ package com.example.group6_f2019_mad3125_fp.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.group6_f2019_mad3125_fp.Activities.EmployeeDetailActivity;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
 
@@ -68,17 +71,17 @@ public class CustomerDataAdapter extends RecyclerView.Adapter<CustomerDataAdapte
         holder.id.setText("Customer ID: "+mydata.getId().toString());
         holder.age.setText("Customer Age: "+mydata.getAge().toString()+" Years");
 
-//        holder.mycardview.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent myintent = new Intent(context, CustomerDetailActivity.class);
-//                myintent.putExtra("custobject",mydata);
-//                context.startActivity(myintent);
-//                //  Toast.makeText(context,"position = "+position,Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
+        holder.mycardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent myintent = new Intent(context, EmployeeDetailActivity.class);
+                myintent.putExtra("empobject", mydata);
+                context.startActivity(myintent);
+                //  Toast.makeText(context,"position = "+position,Toast.LENGTH_LONG).show();
+
+            }
+        });
 
     }
 

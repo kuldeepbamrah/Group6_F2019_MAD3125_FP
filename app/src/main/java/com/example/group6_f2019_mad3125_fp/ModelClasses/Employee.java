@@ -1,5 +1,8 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,7 +16,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 @Entity(tableName = "employee")
-public class Employee {
+public class Employee implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
@@ -86,6 +89,59 @@ public class Employee {
         this.hoursWorked = hoursWorked;
         this.fixedAmount = fixedAmount;
     }
+
+    protected Employee(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readInt();
+        }
+        name = in.readString();
+        if (in.readByte() == 0) {
+            age = null;
+        } else {
+            age = in.readInt();
+        }
+        schoolName = in.readString();
+        type = in.readString();
+        if (in.readByte() == 0) {
+            salary = null;
+        } else {
+            salary = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            bonus = null;
+        } else {
+            bonus = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            rate = null;
+        } else {
+            rate = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            hoursWorked = null;
+        } else {
+            hoursWorked = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            fixedAmount = null;
+        } else {
+            fixedAmount = in.readDouble();
+        }
+    }
+
+    public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+        @Override
+        public Employee createFromParcel(Parcel in) {
+            return new Employee(in);
+        }
+
+        @Override
+        public Employee[] newArray(int size) {
+            return new Employee[size];
+        }
+    };
 
     public Integer getId() {
         return id;
@@ -175,4 +231,57 @@ public class Employee {
         this.fixedAmount = fixedAmount;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(name);
+        if (age == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(age);
+        }
+        dest.writeString(schoolName);
+        dest.writeString(type);
+        if (salary == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(salary);
+        }
+        if (bonus == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(bonus);
+        }
+        if (rate == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(rate);
+        }
+        if (hoursWorked == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(hoursWorked);
+        }
+        if (fixedAmount == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(fixedAmount);
+        }
+    }
 }
