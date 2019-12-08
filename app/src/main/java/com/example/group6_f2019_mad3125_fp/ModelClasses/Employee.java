@@ -79,7 +79,7 @@ public class Employee implements Parcelable {
 
      */
     @Ignore
-    public Employee(Integer id, String name, Integer age, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount) {
+    public Employee(Integer id, String name, Integer age, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount, Integer commissionPercent) {
         super();
         this.id = id;
         this.name = name;
@@ -92,6 +92,7 @@ public class Employee implements Parcelable {
         this.rate = rate;
         this.hoursWorked = hoursWorked;
         this.fixedAmount = fixedAmount;
+        this.commissionPercent = commissionPercent;
     }
 
     protected Employee(Parcel in) {
@@ -133,6 +134,11 @@ public class Employee implements Parcelable {
         } else {
             fixedAmount = in.readDouble();
         }
+        if (in.readByte() == 0) {
+            commissionPercent = null;
+        } else {
+            commissionPercent = in.readInt();
+        }
     }
 
     public static final Creator<Employee> CREATOR = new Creator<Employee>() {
@@ -146,6 +152,14 @@ public class Employee implements Parcelable {
             return new Employee[size];
         }
     };
+
+    public Integer getCommissionPercent() {
+        return commissionPercent;
+    }
+
+    public void setCommissionPercent(Integer commissionPercent) {
+        this.commissionPercent = commissionPercent;
+    }
 
     public Integer getId() {
         return id;
@@ -286,6 +300,12 @@ public class Employee implements Parcelable {
         } else {
             dest.writeByte((byte) 1);
             dest.writeDouble(fixedAmount);
+        }
+        if (commissionPercent == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(commissionPercent);
         }
     }
 }

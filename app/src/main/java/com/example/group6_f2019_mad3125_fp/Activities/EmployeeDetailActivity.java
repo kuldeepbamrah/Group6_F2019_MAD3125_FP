@@ -74,12 +74,13 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             parttime.setVisibility(View.VISIBLE);
             TextView salaryptime = findViewById(R.id.textEmpsalaryparttime);
             TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
-            TextView commision = findViewById(R.id.textEmpcommisionptime);
+            TextView commisionpercent = findViewById(R.id.textEmpcommisionptime);
             Double salary = myemp.getHoursWorked() * myemp.getRate();
             salaryptime.setText(String.valueOf(salary) + " $ (" + String.valueOf(myemp.getHoursWorked()) + " Hrs * " + String.valueOf(myemp.getRate()) + " $)" );
-            String totalptimesalary = String.valueOf(salary + myemp.getFixedAmount());
-            commision.setText(String.valueOf(myemp.()) + " $");
-            totalsalaryptime.setText(totalptimesalary + " $");
+            Double commision = salary * myemp.getCommissionPercent()/100;
+            String totalpctimesalary = String.valueOf(salary + commision);
+            commisionpercent.setText(String.valueOf(myemp.getCommissionPercent()) + " %");
+            totalsalaryptime.setText(totalpctimesalary + " $");
 
         }
 

@@ -65,8 +65,8 @@
     {
         "@class": "ca.lambton.payroll.employee.CommissionBasedPartTime",
         "id": 4,
-        "name": "Seongyeob",
-        "age": 29,
+        "name": "Rizul Goyal",
+        "age": 25,
         "vehicle": null,
         "rate": 40.0,
         "hoursWorked": 178,
