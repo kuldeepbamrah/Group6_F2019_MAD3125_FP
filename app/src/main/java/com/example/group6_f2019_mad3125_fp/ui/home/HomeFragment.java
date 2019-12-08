@@ -15,9 +15,12 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class HomeFragment extends Fragment {
 
-TextView numberemp;
+TextView numberemp, datetime;
 Integer empcount;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState)
@@ -27,6 +30,19 @@ Integer empcount;
         empcount = employeeDB.daoObjct().count();
         numberemp = view.findViewById(R.id.textView4);
         numberemp.setText(String.valueOf(empcount));
+
+        datetime = view.findViewById(R.id.textdateandtime);
+
+        Calendar c = Calendar.getInstance();
+        System.out.println("Current time => "+c.getTime());
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MMMM-dd \n hh:mm:ss aa");
+        String formattedDate = df.format(c.getTime());
+        // formattedDate have current date/time
+
+
+        // Now we display formattedDate value in TextView
+        datetime.setText(formattedDate);
         return view;
 
     }
