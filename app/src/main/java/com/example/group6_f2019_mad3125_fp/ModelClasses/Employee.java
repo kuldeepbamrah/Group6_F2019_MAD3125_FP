@@ -53,6 +53,10 @@ public class Employee implements Parcelable {
     @Expose
     private Double fixedAmount;
 
+    @SerializedName("commissionPercent")
+    @Expose
+    private Integer commissionPercent;
+
     /**
      * No args constructor for use in serialization
      *

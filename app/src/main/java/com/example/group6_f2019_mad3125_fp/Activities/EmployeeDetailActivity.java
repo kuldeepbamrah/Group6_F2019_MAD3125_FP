@@ -43,7 +43,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
         }
 
-        if(myemp.getType().equalsIgnoreCase("fulltime"))
+        else if(myemp.getType().equalsIgnoreCase("fulltime"))
         {
 
             fulltime.setVisibility(View.VISIBLE);
@@ -52,6 +52,34 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             salary.setText(String.valueOf(myemp.getSalary()) + " $ + " + String.valueOf(myemp.getBonus()) + " $ (C)" );
             String totalftimesalary = String.valueOf(myemp.getSalary() + myemp.getBonus()) + " $";
             totalsalary.setText(totalftimesalary);
+
+        }
+        else if(myemp.getType().equalsIgnoreCase("PartTime / Fixed Amount"))
+        {
+
+            parttime.setVisibility(View.VISIBLE);
+            TextView salaryptime = findViewById(R.id.textEmpsalaryparttime);
+            TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
+            TextView commision = findViewById(R.id.textEmpcommisionptime);
+            Double salary = myemp.getHoursWorked() * myemp.getRate();
+            salaryptime.setText(String.valueOf(salary) + " $ (" + String.valueOf(myemp.getHoursWorked()) + " Hrs * " + String.valueOf(myemp.getRate()) + " $)" );
+            String totalptimesalary = String.valueOf(salary + myemp.getFixedAmount());
+            commision.setText(String.valueOf(myemp.getFixedAmount()) + " $");
+            totalsalaryptime.setText(totalptimesalary + " $");
+
+        }
+        else if(myemp.getType().equalsIgnoreCase("PartTime / Commissioned"))
+        {
+
+            parttime.setVisibility(View.VISIBLE);
+            TextView salaryptime = findViewById(R.id.textEmpsalaryparttime);
+            TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
+            TextView commision = findViewById(R.id.textEmpcommisionptime);
+            Double salary = myemp.getHoursWorked() * myemp.getRate();
+            salaryptime.setText(String.valueOf(salary) + " $ (" + String.valueOf(myemp.getHoursWorked()) + " Hrs * " + String.valueOf(myemp.getRate()) + " $)" );
+            String totalptimesalary = String.valueOf(salary + myemp.getFixedAmount());
+            commision.setText(String.valueOf(myemp.()) + " $");
+            totalsalaryptime.setText(totalptimesalary + " $");
 
         }
 
