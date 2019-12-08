@@ -1,9 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightcolor"
+    android:orientation="vertical"
     tools:context=".Activities.EmployeeDetailActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/detailtext"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/lightcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Detail of Employee"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Employee ID"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textEmpID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:text="Employee ID"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Employee Name"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textEmpName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:text="emp Name"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Employee Age"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textEmpAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:text="Customer Age"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Customer E-mail"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/textEmpEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/background_dark"
+            android:text="Customer E-mail"
+            android:textSize="15dp"
+            android:padding="10dp">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/detailtext1"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:background="@color/customBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="List of Customer's Bills"
+        android:textColor="@android:color/background_light"
+        android:textSize="20dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_vehicle"
+        android:background="@android:color/background_light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

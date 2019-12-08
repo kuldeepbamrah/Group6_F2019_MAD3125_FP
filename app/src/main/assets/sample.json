@@ -13,6 +13,14 @@
             "model": "MODEL 1",
             "insurance": true,
             "type": "Motorcycle"
+        },{
+            "@class": "ca.lambton.payroll.vehicle.Motorcycle",
+            "id": 2,
+            "make": "Chevrolet",
+            "plate": "CFDR-171 ",
+            "model": "MODEL 2",
+            "insurance": true,
+            "type": "Car"
         }],
         "schoolName": "Lambton College",
         "type": "Intern"
