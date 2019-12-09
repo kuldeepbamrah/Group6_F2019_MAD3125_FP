@@ -66,9 +66,9 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
         String fname = mydata.getMake();
 
-        holder.name.setText("Employee Name: "+ fname);
-        holder.id.setText("Employee ID: "+mydata.getId().toString());
-        holder.age.setText("Employee Age: "+mydata.getAge().toString()+" Years");
+//        holder.name.setText("Employee Name: "+ fname);
+//        holder.id.setText("Employee ID: "+mydata.getId().toString());
+//        //holder.age.setText("Employee Age: "+mydata.getAge().toString()+" Years");
 
         holder.mycardview.setOnClickListener(new View.OnClickListener() {
             @Override
