@@ -26,11 +26,11 @@ public class ListOfEmployeeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_employeelist,container,false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        EmployeeDataAdapter customerDataAdapter = new EmployeeDataAdapter(getContext());
+        EmployeeDataAdapter employeeDataAdapter = new EmployeeDataAdapter(getContext());
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
         employees = employeeDB.daoObjct().getUserDetails();
-        customerDataAdapter.setMyaaraylist(employees);
-        recyclerView.setAdapter(customerDataAdapter);
+        employeeDataAdapter.setMyaaraylist(employees);
+        recyclerView.setAdapter(employeeDataAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
