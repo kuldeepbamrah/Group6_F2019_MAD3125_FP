@@ -19,10 +19,10 @@ public class EmpVehicleTypeConverter
     }
 
     @TypeConverter
-    public static  String fromBill(List<Vehicle> bill)
+    public static  String fromVehicle(List<Vehicle> vehicles)
     {
         Gson gson = new Gson();
-        String json = gson.toJson(bill);
+        String json = gson.toJson(vehicles);
         return json;
     }
 }

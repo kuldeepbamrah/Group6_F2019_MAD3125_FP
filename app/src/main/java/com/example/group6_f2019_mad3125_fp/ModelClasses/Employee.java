@@ -1,5 +1,6 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -15,6 +16,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@SuppressLint("ParcelCreator")
 @Entity(tableName = "employee")
 public class Employee implements Parcelable {
 
@@ -57,12 +59,12 @@ public class Employee implements Parcelable {
     @Expose
     private Integer commissionPercent;
 
+
     /**
      * No args constructor for use in serialization
      *
      */
-    public Employee() {
-    }
+
 
     /**
      *
@@ -78,7 +80,6 @@ public class Employee implements Parcelable {
      * @param hoursWorked
 
      */
-    @Ignore
     public Employee(Integer id, String name, Integer age, String schoolName, String type, Double salary, Double bonus, Double rate, Integer hoursWorked, Double fixedAmount, Integer commissionPercent) {
         super();
         this.id = id;
@@ -95,6 +96,7 @@ public class Employee implements Parcelable {
         this.commissionPercent = commissionPercent;
     }
 
+
     protected Employee(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
@@ -107,6 +109,7 @@ public class Employee implements Parcelable {
         } else {
             age = in.readInt();
         }
+        vehicle = in.createTypedArrayList(Vehicle.CREATOR);
         schoolName = in.readString();
         type = in.readString();
         if (in.readByte() == 0) {
@@ -249,6 +252,7 @@ public class Employee implements Parcelable {
         this.fixedAmount = fixedAmount;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -269,6 +273,7 @@ public class Employee implements Parcelable {
             dest.writeByte((byte) 1);
             dest.writeInt(age);
         }
+        dest.writeTypedList(vehicle);
         dest.writeString(schoolName);
         dest.writeString(type);
         if (salary == null) {

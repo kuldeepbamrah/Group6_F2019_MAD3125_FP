@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.group6_f2019_mad3125_fp.Adapters.EmployeeDataAdapter;
 import com.example.group6_f2019_mad3125_fp.Adapters.VehicleDataAdapter;
@@ -92,14 +93,25 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
         }
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
-        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+
+
         List<Vehicle> vehicles = myemp.getVehicle();
-        vehicleDataAdapter.setMyaaraylist(vehicles);
-        recyclerView.setAdapter(vehicleDataAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+
+        if (vehicles ==  null)
+        {
+            Toast.makeText(this,"No vehicle",Toast.LENGTH_SHORT).show();
+
+        }
+        else {
+
+            RecyclerView recyclerView = findViewById(R.id.recycler_vehicle);
+            VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+            vehicleDataAdapter.setMyaaraylist(vehicles);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(vehicleDataAdapter);
+
+        }
 
 
 
