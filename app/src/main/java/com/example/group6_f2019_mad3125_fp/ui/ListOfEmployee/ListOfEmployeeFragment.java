@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.group6_f2019_mad3125_fp.Adapters.CustomerDataAdapter;
+import com.example.group6_f2019_mad3125_fp.Adapters.EmployeeDataAdapter;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
@@ -26,7 +26,7 @@ public class ListOfEmployeeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_employeelist,container,false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        CustomerDataAdapter customerDataAdapter = new CustomerDataAdapter(getContext());
+        EmployeeDataAdapter customerDataAdapter = new EmployeeDataAdapter(getContext());
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
         employees = employeeDB.daoObjct().getUserDetails();
         customerDataAdapter.setMyaaraylist(employees);

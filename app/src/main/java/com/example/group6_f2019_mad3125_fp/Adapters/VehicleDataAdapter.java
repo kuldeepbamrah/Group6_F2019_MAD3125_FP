@@ -3,12 +3,10 @@ package com.example.group6_f2019_mad3125_fp.Adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -16,18 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group6_f2019_mad3125_fp.Activities.EmployeeDetailActivity;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
 
 import java.util.List;
 
 
-public class CustomerDataAdapter extends RecyclerView.Adapter<CustomerDataAdapter.ViewHolder> {
+public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.ViewHolder> {
 
     private Context context;
-    private List<Employee> myaaraylist;
+    private List<Vehicle> myaaraylist;
 
 
-    public CustomerDataAdapter(Context context)
+    public VehicleDataAdapter(Context context)
     {
         this.context = context;
     }
@@ -43,11 +42,11 @@ public class CustomerDataAdapter extends RecyclerView.Adapter<CustomerDataAdapte
         this.context = context;
     }
 
-    public List<Employee> getMyaaraylist() {
+    public List<Vehicle> getMyaaraylist() {
         return myaaraylist;
     }
 
-    public void setMyaaraylist(List<Employee> myaaraylist) {
+    public void setMyaaraylist(List<Vehicle> myaaraylist) {
         this.myaaraylist = myaaraylist;
     }
 
@@ -63,9 +62,9 @@ public class CustomerDataAdapter extends RecyclerView.Adapter<CustomerDataAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position)
     {
 
-        final Employee mydata = myaaraylist.get(position);
+        final Vehicle mydata = myaaraylist.get(position);
 
-        String fname = mydata.getName();
+        String fname = mydata.getMake();
 
         holder.name.setText("Employee Name: "+ fname);
         holder.id.setText("Employee ID: "+mydata.getId().toString());
