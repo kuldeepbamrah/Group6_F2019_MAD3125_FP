@@ -12,7 +12,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_margin="15dp"
-        android:src="@drawable/ic_action_error"></ImageView>
+        android:src="@drawable/ic_action_help"></ImageView>
 
     <TextView
         android:id="@+id/dialogtext"
@@ -20,9 +20,67 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:padding="10dp"
-        android:text="Are you sure you want to Exit from this page ?"
+        android:text="For help you can contact us at given below information ?"
         android:textAlignment="center"
+        android:lineSpacingExtra="10dp"
         android:textSize="20dp"></TextView>
+
+
+    <LinearLayout
+        android:background="@color/lightcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_action_phone"></ImageView>
+
+        <TextView
+            android:id="@+id/dialogphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="10dp"
+            android:text="(+1) 123-456-7890"
+            android:textAlignment="center"
+            android:textSize="25dp"></TextView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/lightcolor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="25dp"
+            android:layout_gravity="center"
+            android:src="@drawable/email"></ImageView>
+
+        <TextView
+            android:id="@+id/dialogemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="10dp"
+            android:text="employee@abc.com"
+            android:textAlignment="center"
+            android:textSize="25dp"></TextView>
+
+
+    </LinearLayout>
+
 
 
     <Button
@@ -31,24 +89,14 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:text="YES"
-        android:textColor="@android:color/background_light"
-        android:textSize="25dp">
-
-    </Button>
-
-    <Button
-        android:id="@+id/customButtonNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="15dp"
-        android:text="NO"
         android:layout_marginTop="20dp"
+        android:text="OK"
         android:textColor="@android:color/background_light"
         android:textSize="25dp">
 
     </Button>
+
+
 
 
 
