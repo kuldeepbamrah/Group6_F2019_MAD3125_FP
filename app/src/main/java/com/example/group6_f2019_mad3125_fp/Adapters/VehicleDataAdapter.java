@@ -53,7 +53,7 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.employee_detail_cell,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.vehicle_detail_cell,parent,false);
         return new ViewHolder(view);
     }
 
@@ -64,19 +64,21 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
         final Vehicle mydata = myaaraylist.get(position);
 
-        String fname = mydata.getMake();
 
-//        holder.name.setText("Employee Name: "+ fname);
-//        holder.id.setText("Employee ID: "+mydata.getId().toString());
-//        //holder.age.setText("Employee Age: "+mydata.getAge().toString()+" Years");
+            holder.plate.setText("Vehicle's Plate: " + mydata.getPlate());
+            holder.type.setText("Vehicle Type : " + mydata.getType());
+
+
 
         holder.mycardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent myintent = new Intent(context, EmployeeDetailActivity.class);
-                myintent.putExtra("empobject", mydata);
-                context.startActivity(myintent);
+
+
+//                Intent myintent = new Intent(context, EmployeeDetailActivity.class);
+//                myintent.putExtra("empobject", mydata);
+//                context.startActivity(myintent);
                 //  Toast.makeText(context,"position = "+position,Toast.LENGTH_LONG).show();
 
             }
@@ -95,7 +97,7 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name, age, id;
+        TextView plate, type;
         CardView mycardview;
 
         public ViewHolder(@NonNull View itemView) {
@@ -103,10 +105,9 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
             super(itemView);
 
-            mycardview = itemView.findViewById(R.id.newcard);
-            id = (TextView)itemView.findViewById(R.id.textView2);
-            name = (TextView)itemView.findViewById(R.id.textView3);
-            age = (TextView)itemView.findViewById(R.id.textView5);
+            mycardview = itemView.findViewById(R.id.newcardvehicle);
+            plate = (TextView)itemView.findViewById(R.id.textViewVehicle1);
+            type = (TextView)itemView.findViewById(R.id.textViewVehicle2);
 
 
 

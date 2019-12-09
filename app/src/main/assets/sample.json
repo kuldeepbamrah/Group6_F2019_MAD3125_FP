@@ -9,7 +9,7 @@
             "@class": "ca.lambton.payroll.vehicle.Motorcycle",
             "id": 0,
             "make": "Honda",
-            "plate": "ABCD-123 ",
+            "plate": "ABCD-123",
             "model": "MODEL 1",
             "insurance": true,
             "type": "Motorcycle"

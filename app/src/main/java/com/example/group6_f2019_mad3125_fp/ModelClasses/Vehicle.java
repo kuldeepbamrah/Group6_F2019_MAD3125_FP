@@ -1,5 +1,6 @@
 package com.example.group6_f2019_mad3125_fp.ModelClasses;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,7 +9,8 @@ import androidx.room.Ignore;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Vehicle implements Parcelable {
+@SuppressLint("ParcelCreator")
+public class Vehicle implements Parcelable{
 
     @SerializedName("id")
     @Expose
@@ -33,8 +35,7 @@ public class Vehicle implements Parcelable {
      * No args constructor for use in serialization
      *
      */
-    public Vehicle() {
-    }
+
 
     /**
      *
@@ -45,7 +46,7 @@ public class Vehicle implements Parcelable {
      * @param type
      * @param make
      */
-    @Ignore
+
     public Vehicle(Integer id, String make, String plate, String model, Boolean insurance, String type) {
         super();
         this.id = id;
@@ -55,6 +56,7 @@ public class Vehicle implements Parcelable {
         this.insurance = insurance;
         this.type = type;
     }
+
 
     protected Vehicle(Parcel in) {
         if (in.readByte() == 0) {
@@ -68,26 +70,6 @@ public class Vehicle implements Parcelable {
         byte tmpInsurance = in.readByte();
         insurance = tmpInsurance == 0 ? null : tmpInsurance == 1;
         type = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        if (id == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(id);
-        }
-        dest.writeString(make);
-        dest.writeString(plate);
-        dest.writeString(model);
-        dest.writeByte((byte) (insurance == null ? 0 : insurance ? 1 : 2));
-        dest.writeString(type);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
     }
 
     public static final Creator<Vehicle> CREATOR = new Creator<Vehicle>() {
@@ -150,4 +132,23 @@ public class Vehicle implements Parcelable {
         this.type = type;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(id);
+        }
+        dest.writeString(make);
+        dest.writeString(plate);
+        dest.writeString(model);
+        dest.writeByte((byte) (insurance == null ? 0 : insurance ? 1 : 2));
+        dest.writeString(type);
+    }
 }
