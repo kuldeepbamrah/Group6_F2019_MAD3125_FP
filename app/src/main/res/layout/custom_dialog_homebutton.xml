@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_dialog_twobutton"
+    android:layout_width="400dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:src="@drawable/ic_action_error"></ImageView>
+
+    <TextView
+        android:id="@+id/dialogtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:text="Are you sure you want to Exit from this page ?"
+        android:textAlignment="center"
+        android:textSize="20dp"></TextView>
+
+
+    <Button
+        android:id="@+id/customButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:text="YES"
+        android:textColor="@android:color/background_light"
+        android:textSize="25dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/customButtonNo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="15dp"
+        android:text="NO"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="25dp">
+
+    </Button>
+
+
+
+
+
+
+</LinearLayout>

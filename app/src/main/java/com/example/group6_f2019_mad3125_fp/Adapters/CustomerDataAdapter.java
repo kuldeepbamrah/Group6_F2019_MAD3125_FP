@@ -67,9 +67,9 @@ public class CustomerDataAdapter extends RecyclerView.Adapter<CustomerDataAdapte
 
         String fname = mydata.getName();
 
-        holder.name.setText("Customer Name: "+ fname);
-        holder.id.setText("Customer ID: "+mydata.getId().toString());
-        holder.age.setText("Customer Age: "+mydata.getAge().toString()+" Years");
+        holder.name.setText("Employee Name: "+ fname);
+        holder.id.setText("Employee ID: "+mydata.getId().toString());
+        holder.age.setText("Employee Age: "+mydata.getAge().toString()+" Years");
 
         holder.mycardview.setOnClickListener(new View.OnClickListener() {
             @Override
