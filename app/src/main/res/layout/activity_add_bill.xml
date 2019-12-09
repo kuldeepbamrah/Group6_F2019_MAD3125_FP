@@ -203,7 +203,6 @@
 
 
                 <EditText
-                    android:inputType="numberDecimal"
                     android:id="@+id/editTextVehicleModel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -235,14 +234,27 @@
 
             <Switch
                 android:id="@+id/switchVehicleInsurance"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:textStyle="bold"
-                android:showText="true"
                 android:textColor="@color/colorPrimary"
-                android:textOff="False"
-                android:textOn="True"></Switch>
+               ></Switch>
+
+            <TextView
+                
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:id="@+id/textswitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:padding="5dp"
+                android:textSize="15dp"
+                android:textColor="@color/colorPrimary"
+
+                android:text="True" />
 
 
         </LinearLayout>

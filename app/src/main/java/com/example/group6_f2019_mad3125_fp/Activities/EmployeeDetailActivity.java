@@ -1,10 +1,15 @@
 package com.example.group6_f2019_mad3125_fp.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -116,5 +121,36 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
 
 
+
+
     }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_vehicle,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.vehicle_add:
+                Employee emptemp =getIntent().getParcelableExtra("custobject");
+
+                Intent myintent = new Intent(this,AddBillActivity.class);
+                myintent.putExtra("custobjectvehicle",emptemp);
+                startActivity(myintent);
+                //   Toast.makeText(HomeActivity.this,"Select Values",Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
