@@ -1,14 +1,22 @@
 package com.example.group6_f2019_mad3125_fp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.group6_f2019_mad3125_fp.Adapters.EmployeeDataAdapter;
+import com.example.group6_f2019_mad3125_fp.Adapters.VehicleDataAdapter;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
+
+import java.util.List;
 
 public class EmployeeDetailActivity extends AppCompatActivity {
 
@@ -83,6 +91,16 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             totalsalaryptime.setText(totalpctimesalary + " $");
 
         }
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+        List<Vehicle> vehicles = myemp.getVehicle();
+        vehicleDataAdapter.setMyaaraylist(vehicles);
+        recyclerView.setAdapter(vehicleDataAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
 
 
 
