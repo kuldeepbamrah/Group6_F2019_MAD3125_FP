@@ -23,6 +23,7 @@ public class AddEmployeeFragment extends Fragment
 {
     Spinner spinner;
     EditText empType,empID,empFname,empAge,empEmail;
+    View empFT,empComm,empIntern,empFixed;
 
     @Nullable
     @Override
@@ -34,7 +35,12 @@ public class AddEmployeeFragment extends Fragment
         empFname = view.findViewById(R.id.editTextEmpfname);
         empAge = view.findViewById(R.id.textEmpAge);
         empEmail = view.findViewById(R.id.editTextEmpemail);
-        
+        empFT =  view.findViewById(R.id.FullTime);
+        empComm = view.findViewById(R.id.CommisionBasedPartTime);
+        empIntern = view.findViewById(R.id.Intern);
+        empFixed  = view.findViewById(R.id.FixedBasedPartTime);
+
+
 
 
         spinner =view.findViewById(R.id.spinner);
@@ -45,6 +51,7 @@ public class AddEmployeeFragment extends Fragment
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this.getActivity());
         empType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
