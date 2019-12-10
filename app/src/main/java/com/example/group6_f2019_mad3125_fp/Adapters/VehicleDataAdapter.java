@@ -1,6 +1,7 @@
 package com.example.group6_f2019_mad3125_fp.Adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.group6_f2019_mad3125_fp.Activities.EmployeeDetailActivity;
+import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
@@ -74,7 +76,9 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
             @Override
             public void onClick(View view) {
 
-
+                String alldatavehicle = "Vehicle Plate: " + mydata.getPlate() + "\n" + "Vehicle Type: " + mydata.getType()  + "\n" + "Vehicle Make: " + mydata.getMake()  + "\n" + "Vehicle Model: " + mydata.getModel()  + "\n" + "Vehicle Insurance: " + mydata.getInsurance().toString() ;
+                CustomDialog mydialog = new CustomDialog();
+                mydialog.showSingleDialog((Activity) context,alldatavehicle);
 
 //                Intent myintent = new Intent(context, EmployeeDetailActivity.class);
 //                myintent.putExtra("empobject", mydata);
