@@ -38,16 +38,16 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         empID = view.findViewById(R.id.textEmpID);
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
         Integer x = employeeDB.daoObjct().count();
-        empID.setText(x);
+        //empID.setText(x);
         empFname = view.findViewById(R.id.editTextEmpfname);
-        empAge = view.findViewById(R.id.textEmpAge);
+        empAge = view.findViewById(R.id.editTextEmpage);
         empEmail = view.findViewById(R.id.editTextEmpemail);
         empFT =  view.findViewById(R.id.FullTime);
         empComm = view.findViewById(R.id.CommisionBasedPartTime);
         empIntern = view.findViewById(R.id.Intern);
         empFixed  = view.findViewById(R.id.FixedBasedPartTime);
         addEmp = view.findViewById(R.id.addCustomer);
-        empSchool = view.findViewById(R.id.textEmpschool);
+        empSchool = view.findViewById(R.id.editTextEmpSchoolName);
         empSalary = view.findViewById(R.id.editTextSalary);
         empBonus = view.findViewById(R.id.editTextBonus);
         empFixedAmount = view.findViewById(R.id.editTextFixed);
@@ -101,21 +101,21 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
             empFT.setVisibility(View.GONE);
 
         }
-        else if(textposition.equalsIgnoreCase("Fixed Based Part Time"))
+        else if(textposition.equalsIgnoreCase("PartTime / Fixed Amount"))
         {
             empIntern.setVisibility(View.GONE);
             empFixed.setVisibility(View.VISIBLE);
             empComm.setVisibility(View.GONE);
             empFT.setVisibility(View.GONE);
         }
-        else if(textposition.equalsIgnoreCase("Commision Based Part Time"))
+        else if(textposition.equalsIgnoreCase("PartTime / Commissioned"))
         {
             empIntern.setVisibility(View.GONE);
             empFixed.setVisibility(View.GONE);
             empComm.setVisibility(View.VISIBLE);
             empFT.setVisibility(View.GONE);
         }
-        else if(textposition.equalsIgnoreCase("Full Time"))
+        else if(textposition.equalsIgnoreCase("FullTime"))
         {
             empIntern.setVisibility(View.GONE);
             empFixed.setVisibility(View.GONE);
@@ -184,7 +184,7 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
 
                 break;
 
-            case R.id.textEmptype:
+            case R.id.editTextEmpType:
                 spinner.performClick();
                 break;
 

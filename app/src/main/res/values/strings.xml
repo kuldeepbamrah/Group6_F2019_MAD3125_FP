@@ -14,9 +14,9 @@
     <string name="menu_logout">Log Out</string>
     <string-array name="emptype">
         <item>Intern</item>
-        <item>Commision Based Part Time</item>
-        <item>Fixed Based Part Time</item>
-        <item>Full Time</item>
+        <item>PartTime / Commissioned</item>
+        <item>PartTime / Fixed Amount</item>
+        <item>FullTime</item>
     </string-array>
     <string-array name="vehicletype">
         <item>Car</item>
