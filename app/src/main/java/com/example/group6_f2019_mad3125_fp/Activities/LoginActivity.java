@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 else
                     {
                     CustomDialog mydialog = new CustomDialog();
-                    mydialog.showDialog(LoginActivity.this,"Please enter correct values");
+                    mydialog.showSingleDialog(LoginActivity.this,"Please enter correct values");
                     Toast.makeText(LoginActivity.this,"sdfs",Toast.LENGTH_SHORT).show();
                 }
                 }

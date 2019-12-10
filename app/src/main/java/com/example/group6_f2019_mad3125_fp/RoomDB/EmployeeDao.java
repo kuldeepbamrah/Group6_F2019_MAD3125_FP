@@ -20,9 +20,13 @@ public interface EmployeeDao {
 
     @Update
     void update(Employee employee);
+
     @Query("Select count(id) from employee")
     Integer count();
 
     @Query("Select * from employee")
     List<Employee> getUserDetails();
+
+    @Query("Select * from employee where id = :id")
+    List<Employee> getCurrentUserDetails(Integer id);
 }
