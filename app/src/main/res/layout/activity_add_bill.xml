@@ -111,7 +111,7 @@
                     android:backgroundTint="@color/colorPrimary"/>
 
                 <Spinner
-                    android:id="@+id/spinner"
+                    android:id="@+id/spinnervehicle"
                     android:layout_width="fill_parent"
                     android:layout_height="0dp"
                     />
@@ -242,15 +242,16 @@
                ></Switch>
 
             <TextView
-                
+
                 android:layout_marginLeft="20dp"
                 android:textAllCaps="true"
                 android:textStyle="bold"
                 android:id="@+id/textswitch"
+                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:textSize="15dp"
                 android:textColor="@color/colorPrimary"
 
@@ -264,7 +265,7 @@
 
 
         <Button
-            android:id="@+id/buttonbill"
+            android:id="@+id/buttonvehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

@@ -18,4 +18,8 @@
         <item>Fixed Based Part Time</item>
         <item>Full Time</item>
     </string-array>
+    <string-array name="vehicletype">
+        <item>Car</item>
+        <item>Motorcycle</item>
+    </string-array>
 </resources>
