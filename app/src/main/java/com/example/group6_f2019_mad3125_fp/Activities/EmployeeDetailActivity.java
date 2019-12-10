@@ -121,14 +121,14 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             final EmployeeDB uData = EmployeeDB.getInstance(this);
 
 
-//            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
-//                @Override
-//                public void onChanged(@Nullable Employee employee) {
-//                    List<Vehicle> bills = employee.getVehicle();
-//                    vehicleDataAdapter.setMyaaraylist(bills);
-//                    vehicleDataAdapter.notifyDataSetChanged();
-//                }
-//            });
+            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+                @Override
+                public void onChanged(@Nullable Employee employee) {
+                    List<Vehicle> bills = employee.getVehicle();
+                    vehicleDataAdapter.setMyaaraylist(bills);
+                    vehicleDataAdapter.notifyDataSetChanged();
+                }
+            });
 
         }
 
