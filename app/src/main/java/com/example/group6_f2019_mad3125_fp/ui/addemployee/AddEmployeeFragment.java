@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,11 +20,12 @@ import com.example.group6_f2019_mad3125_fp.R;
 import java.util.Objects;
 
 
-public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener
+public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener
 {
     Spinner spinner;
     EditText empType,empID,empFname,empAge,empEmail;
     View empFT,empComm,empIntern,empFixed;
+    Button addEmp;
 
     @Nullable
     @Override
@@ -39,6 +41,7 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         empComm = view.findViewById(R.id.CommisionBasedPartTime);
         empIntern = view.findViewById(R.id.Intern);
         empFixed  = view.findViewById(R.id.FixedBasedPartTime);
+        addEmp = view.findViewById(R.id.addCustomer);
 
 
 
@@ -53,12 +56,10 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        empType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                spinner.performClick();
-            }
-        });
+        empType.setOnClickListener(this);
+
+
+        addEmp.setOnClickListener(this);
         return view;
 
 
@@ -103,7 +104,6 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         {
             empIntern.setVisibility(View.GONE);
             empFixed.setVisibility(View.GONE);
-            
             empComm.setVisibility(View.GONE);
             empFT.setVisibility(View.VISIBLE);
         }
@@ -114,6 +114,22 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
     @Override
     public void onNothingSelected(AdapterView<?> adapterView)
     {
+        empType.setText("");
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        switch (view.getId())
+        {
+            case R.id.addCustomer:
+                break;
+
+            case R.id.textEmptype:
+                spinner.performClick();
+                break;
+
+        }
 
     }
 }
