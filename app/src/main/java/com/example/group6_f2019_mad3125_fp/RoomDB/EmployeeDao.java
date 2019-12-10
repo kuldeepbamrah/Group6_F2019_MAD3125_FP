@@ -25,8 +25,10 @@ public interface EmployeeDao {
     Integer count();
 
     @Query("Select * from employee")
-    List<Employee> getUserDetails();
+    LiveData<List<Employee>> getUserDetails();
 
+    @Query("Select * from employee")
+    List<Employee> getDefault();
     @Query("Select * from employee where id = :id")
-    List<Employee> getCurrentUserDetails(Integer id);
+    LiveData<Employee> getCurrentUserDetails(Integer id);
 }

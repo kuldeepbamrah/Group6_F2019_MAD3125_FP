@@ -3,6 +3,7 @@ package com.example.group6_f2019_mad3125_fp.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -111,26 +112,28 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         else {
 
             RecyclerView recyclerView = findViewById(R.id.recycler_vehicle);
-            VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
             vehicleDataAdapter.setMyaaraylist(vehicles);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(layoutManager);
             recyclerView.setAdapter(vehicleDataAdapter);
 
+            final EmployeeDB uData = EmployeeDB.getInstance(this);
+
+
+//            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+//                @Override
+//                public void onChanged(@Nullable Employee employee) {
+//                    List<Vehicle> bills = employee.getVehicle();
+//                    vehicleDataAdapter.setMyaaraylist(bills);
+//                    vehicleDataAdapter.notifyDataSetChanged();
+//                }
+//            });
+
         }
 
 
-        final EmployeeDB uData = EmployeeDB.getInstance(this);
 
-
-        uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Customer>() {
-            @Override
-            public void onChanged(@Nullable Customer customer) {
-                List<Bill> bills = customer.getBill();
-                myadapter.setMyaaraylist(bills);
-                myadapter.notifyDataSetChanged();
-            }
-        });
 
 
 
@@ -153,10 +156,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.vehicle_add:
-                Employee emptemp =getIntent().getParcelableExtra("custobject");
+                Employee emptemp =getIntent().getParcelableExtra("empobject");
 
                 Intent myintent = new Intent(this,AddBillActivity.class);
-                myintent.putExtra("custobjectvehicle",emptemp);
+                myintent.putExtra("empobjectvehicle",emptemp);
                 startActivity(myintent);
                 //   Toast.makeText(HomeActivity.this,"Select Values",Toast.LENGTH_SHORT).show();
                 break;

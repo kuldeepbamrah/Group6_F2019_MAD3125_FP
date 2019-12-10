@@ -90,6 +90,7 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
     @Override
     public int getItemCount() {
         return myaaraylist.size();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

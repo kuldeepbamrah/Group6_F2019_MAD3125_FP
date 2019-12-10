@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
+import androidx.lifecycle.LiveData;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     String json = new String();
     String temps;
-    List<Employee> myarraylist;
+    LiveData<List<Employee>> myarraylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
-            myarraylist = employeeDB.daoObjct().getUserDetails();
+            //myarraylist = employeeDB.daoObjct().getUserDetails();
         }
         //json data end
 

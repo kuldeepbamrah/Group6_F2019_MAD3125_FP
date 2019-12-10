@@ -21,7 +21,7 @@ public class LogOutFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         CustomDialog customDialog = new CustomDialog();
-        customDialog.showDialog(getActivity(),"Are you sure you want to Log Out?");
+     //   customDialog.showDialog(getActivity(),"Are you sure you want to Log Out?");
         getActivity().finish();
         return null;
     }

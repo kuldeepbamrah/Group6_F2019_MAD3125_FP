@@ -192,7 +192,11 @@ public class Employee implements Parcelable {
         return vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicle(List<Vehicle> vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public void setmyVehicle(Vehicle vehicle) {
         this.vehicle.add(vehicle);
     }
 

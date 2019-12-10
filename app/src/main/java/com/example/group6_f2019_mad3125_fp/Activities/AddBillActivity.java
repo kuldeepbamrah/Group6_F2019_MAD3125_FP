@@ -165,8 +165,20 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
         }
         else {
 
-            CustomDialog mydialog = new CustomDialog();
-            mydialog.showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
+//            CustomDialog mydialog = new CustomDialog();
+//            mydialog.showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
+
+            Employee myemp = getIntent().getParcelableExtra("empobjectvehicle");
+            Vehicle tempobject = new Vehicle(1,vmake,vplate,vmodel,vinsurance,vtype);
+
+            final EmployeeDB uData = EmployeeDB.getInstance(AddBillActivity.this);
+
+
+            myemp.setmyVehicle(tempobject);
+            //Gson gson = new Gson();
+
+
+            uData.daoObjct().update(myemp);
 
 
 
@@ -178,14 +190,14 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
     public void createvehicle()
     {
 
-        Employee myemp = getIntent().getParcelableExtra("empobject");
+        Employee myemp = getIntent().getParcelableExtra("empobjectvehicle");
 
         Vehicle tempobject = new Vehicle(1,vmake,vplate,vmodel,vinsurance,vtype);
 
         final EmployeeDB uData = EmployeeDB.getInstance(AddBillActivity.this);
 
 
-        myemp.setVehicle(tempobject);
+        myemp.setmyVehicle(tempobject);
         //Gson gson = new Gson();
 
 
