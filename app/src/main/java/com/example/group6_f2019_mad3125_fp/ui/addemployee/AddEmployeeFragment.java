@@ -22,7 +22,8 @@ import java.util.Objects;
 public class AddEmployeeFragment extends Fragment
 {
     Spinner spinner;
-    EditText empType;
+    EditText empType,empID,empFname,empAge,empEmail;
+    View empFT,empComm,empIntern,empFixed;
 
     @Nullable
     @Override
@@ -30,6 +31,17 @@ public class AddEmployeeFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_addemployee,container,false);
         empType = view.findViewById(R.id.editTextEmpType);
+        empID = view.findViewById(R.id.textEmpID);
+        empFname = view.findViewById(R.id.editTextEmpfname);
+        empAge = view.findViewById(R.id.textEmpAge);
+        empEmail = view.findViewById(R.id.editTextEmpemail);
+        empFT =  view.findViewById(R.id.FullTime);
+        empComm = view.findViewById(R.id.CommisionBasedPartTime);
+        empIntern = view.findViewById(R.id.Intern);
+        empFixed  = view.findViewById(R.id.FixedBasedPartTime);
+
+
+
 
         spinner =view.findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -39,6 +51,8 @@ public class AddEmployeeFragment extends Fragment
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener((this.getActivity());
+        
         empType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +61,10 @@ public class AddEmployeeFragment extends Fragment
         });
         return view;
 
+
     }
+
+
 
 
 
