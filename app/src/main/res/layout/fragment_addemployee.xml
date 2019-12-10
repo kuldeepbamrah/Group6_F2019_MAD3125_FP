@@ -184,46 +184,6 @@
 
 
             <TextView
-                android:id="@+id/text5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:padding="5dp"
-                android:textSize="15dp"
-                android:text="Enter Employee Email" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="3dp"
-                android:background="@color/cardview_dark_background"
-
-                android:layout_marginRight="10dp">
-
-
-                <EditText
-                    android:id="@+id/editTextEmpemail"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:singleLine="true"
-                    android:backgroundTint="@color/cardview_dark_background"/>
-
-            </androidx.cardview.widget.CardView>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-            <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -300,6 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
+                    android:inputType="number"
                     android:backgroundTint="@color/cardview_dark_background"/>
 
             </androidx.cardview.widget.CardView>
@@ -319,6 +280,7 @@
                 android:layout_marginLeft="5dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="3dp"
+
                 android:background="@color/cardview_dark_background"
 
                 android:layout_marginRight="10dp">
@@ -326,6 +288,7 @@
 
                 <EditText
                     android:id="@+id/editTextHrate"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
@@ -355,6 +318,7 @@
                 <EditText
                     android:id="@+id/editTextCommision"
                     android:layout_width="match_parent"
+                    android:inputType="number"
                     android:layout_height="match_parent"
                     android:singleLine="true"
                     android:backgroundTint="@color/cardview_dark_background"/>
@@ -438,6 +402,7 @@
 
                 <EditText
                     android:id="@+id/editTextHoursWorkedFT"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
@@ -468,6 +433,7 @@
                     android:id="@+id/editTextHrateFT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:backgroundTint="@color/cardview_dark_background"/>
 
@@ -496,6 +462,7 @@
                     android:id="@+id/editTextFixed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
                     android:singleLine="true"
                     android:backgroundTint="@color/cardview_dark_background"/>
 
@@ -536,6 +503,7 @@
 
                 <EditText
                     android:id="@+id/editTextSalary"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
@@ -564,6 +532,7 @@
 
                 <EditText
                     android:id="@+id/editTextBonus"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"

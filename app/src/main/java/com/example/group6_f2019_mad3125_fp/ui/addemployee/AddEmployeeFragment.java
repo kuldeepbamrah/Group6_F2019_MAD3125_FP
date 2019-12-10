@@ -1,20 +1,26 @@
 package com.example.group6_f2019_mad3125_fp.ui.addemployee;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.group6_f2019_mad3125_fp.Activities.AddBillActivity;
+import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
@@ -25,7 +31,7 @@ import java.util.Objects;
 public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener
 {
     Spinner spinner;
-    EditText empType,empID,empFname,empAge,empEmail,empSchool,empSalary,empBonus,empFixedAmount,empHoursWorked,empHoursWorkedFT,empCommision,empHourlyRate, empHourlyRateFT;
+    EditText empType,empID,empFname,empAge,empSchool,empSalary,empBonus,empFixedAmount,empHoursWorked,empHoursWorkedFT,empCommision,empHourlyRate, empHourlyRateFT;
     View empFT,empComm,empIntern,empFixed;
     Button addEmp;
 
@@ -35,13 +41,10 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
 
         View view = inflater.inflate(R.layout.fragment_addemployee,container,false);
         empType = view.findViewById(R.id.editTextEmpType);
-        empID = view.findViewById(R.id.textEmpID);
-        EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
-        Integer x = employeeDB.daoObjct().count();
-        //empID.setText(x);
+        empID = view.findViewById(R.id.editTextEmpID);
+
         empFname = view.findViewById(R.id.editTextEmpfname);
         empAge = view.findViewById(R.id.editTextEmpage);
-        empEmail = view.findViewById(R.id.editTextEmpemail);
         empFT =  view.findViewById(R.id.FullTime);
         empComm = view.findViewById(R.id.CommisionBasedPartTime);
         empIntern = view.findViewById(R.id.Intern);
@@ -89,6 +92,7 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
     {
+
         String textposition =  adapterView.getSelectedItem().toString();
         empType.setText(textposition);
 
@@ -156,51 +160,145 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
 
 
 
-    public void createemployee()
-    {
+    public void createemployee() {
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
         Integer x = employeeDB.daoObjct().count();
 
 
         String empname = empFname.getText().toString();
-        String empemail = empEmail.getText().toString();
-        String empage =  empAge.getText().toString();
+        String empage = empAge.getText().toString();
         String emptype = empType.getText().toString();
+        String schoolname = empSchool.getText().toString();
+        String salaryftime = empSalary.getText().toString();
+        String bonusftime = empBonus.getText().toString();
+        String hourscptime = empHoursWorked.getText().toString();
+        String ratecptime = empHourlyRate.getText().toString();
+        String cmsncptime = empCommision.getText().toString();
+        String hoursfptime = empHoursWorkedFT.getText().toString();
+        String ratefptime = empHourlyRateFT.getText().toString();
+        String fixedamountcptime = empFixedAmount.getText().toString();
 
 
+        if (empname.equals("") || empage.equals("") || emptype.equals("")) {
+            CustomDialog mydialog = new CustomDialog();
+            mydialog.showSingleDialog(getActivity(), "Please Insert all common fields to complete the add employee form");
 
-        switch (emptype)
-        {
-            case "Intern":
+        } else {
 
-                String schoolname = empSchool.getText().toString();
-                Employee myemp = new Employee(x+1,empname,Integer.parseInt(empage),schoolname,emptype,0.0,0.0,0.0,0,0.0,0);
-                employeeDB.daoObjct().insert(myemp);
-                break;
-            case "FullTime":
-                Double salaryftime = Double.parseDouble(empSalary.getText().toString());
-                Double bonusftime = Double.parseDouble(empBonus.getText().toString());
-                Employee myempftime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,salaryftime,bonusftime,0.0,0,0.0,0);
-                employeeDB.daoObjct().insert(myempftime);
-                break;
-            case "PartTime / Commissioned":
-                Integer hourscptime = Integer.parseInt(empHoursWorked.getText().toString());
-                Double ratecptime = Double.parseDouble(empHourlyRate.getText().toString());
-                Integer cmsncptime = Integer.parseInt(empCommision.getText().toString());
+            switch (emptype) {
+                case "Intern":
 
-                Employee myempcptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratecptime,hourscptime,0.0,cmsncptime);
-                employeeDB.daoObjct().insert(myempcptime);
-                break;
-            case "PartTime / Fixed Amount":
-                Integer hoursfptime = Integer.parseInt(empHoursWorkedFT.getText().toString());
-                Double ratefptime = Double.parseDouble(empHourlyRateFT.getText().toString());
-                Double fixedamountcptime = Double.parseDouble(empFixedAmount.getText().toString());
+                    if(empSchool.equals(""))
+                    {
 
-                Employee myempfptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratefptime,hoursfptime,fixedamountcptime,0);
-                employeeDB.daoObjct().insert(myempfptime);
-                break;
+                        CustomDialog mydialog = new CustomDialog();
+                        mydialog.showSingleDialog(getActivity(), "Please Insert School Name field to complete the add employee form");
+
+
+                    }
+                    else {
+
+                        Employee myemp = new Employee(x + 1, empname, Integer.parseInt(empage), schoolname, emptype, 0.0, 0.0, 0.0, 0, 0.0, 0);
+                        employeeDB.daoObjct().insert(myemp);
+                        Toast.makeText(getContext(),"Intern Employee Added Successfully",Toast.LENGTH_SHORT).show();
+                        getActivity().onBackPressed();
+                    }
+                    break;
+                case "FullTime":
+
+                    if(empSalary.equals("") || empBonus.equals(""))
+                    {
+
+                        CustomDialog mydialog = new CustomDialog();
+                        mydialog.showSingleDialog(getActivity(), "Please insert All Full Time Employee fields to complete the add employee form");
+
+
+                    }
+                    else {
+                        Employee myempftime = new Employee(x + 1, empname, Integer.parseInt(empage), "", emptype, Double.parseDouble(salaryftime), Double.parseDouble(bonusftime), 0.0, 0, 0.0, 0);
+                        employeeDB.daoObjct().insert(myempftime);
+                        Toast.makeText(getContext(),"Full Time Employee Added Successfully",Toast.LENGTH_SHORT).show();
+
+                        getActivity().onBackPressed();
+
+                    }
+                    break;
+                case "PartTime / Commissioned":
+                    if(hourscptime.equals("") || ratecptime.equals("") || cmsncptime.equals(""))
+                    {
+
+                        CustomDialog mydialog = new CustomDialog();
+                        mydialog.showSingleDialog(getActivity(), "Please insert All Part Time Commision Employee fields to complete the add employee form");
+
+
+                    }
+                    else {
+
+                        Employee myempcptime = new Employee(x + 1, empname, Integer.parseInt(empage), "", emptype, 0.0, 0.0, Double.parseDouble(ratecptime), Integer.parseInt(hourscptime), 0.0, Integer.parseInt(cmsncptime));
+                        employeeDB.daoObjct().insert(myempcptime);
+                        Toast.makeText(getContext(),"Part Time Commisioned Employee Added Successfully",Toast.LENGTH_SHORT).show();
+
+                        getActivity().onBackPressed();
+                    }
+                    break;
+                case "PartTime / Fixed Amount":
+
+                    if(hoursfptime.equals("") || ratefptime.equals("") || fixedamountcptime.equals(""))
+                    {
+
+                        CustomDialog mydialog = new CustomDialog();
+                        mydialog.showSingleDialog(getActivity(), "Please insert All Part Time Commision Employee fields to complete the add employee form");
+
+
+                    }
+                    else {
+
+                        Employee myempfptime = new Employee(x + 1, empname, Integer.parseInt(empage), "", emptype, 0.0, 0.0, Double.parseDouble(ratefptime), Integer.parseInt(hoursfptime), Double.parseDouble(fixedamountcptime), 0);
+                        employeeDB.daoObjct().insert(myempfptime);
+                        Toast.makeText(getContext(),"Part Time Fixed Amt Employee Added Successfully",Toast.LENGTH_SHORT).show();
+
+                        getActivity().onBackPressed();
+                    }
+                    break;
+
+            }
 
         }
+    }
+
+
+
+    public void showDialog(final Activity context, String msg) {
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.custom_dialog_twobutton);
+
+        TextView text = (TextView) dialog.findViewById(R.id.dialogtext);
+        text.setText(msg);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.customButton);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddBillActivity mybill = new AddBillActivity();
+                mybill.createvehicle();
+
+                dialog.dismiss();
+                context.finish();
+            }
+        });
+        Button dialogNoButton = (Button) dialog.findViewById(R.id.customButtonNo);
+        dialogNoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
 
     }
 }
