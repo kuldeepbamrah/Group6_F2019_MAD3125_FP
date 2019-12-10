@@ -19,7 +19,7 @@ import com.example.group6_f2019_mad3125_fp.R;
 import java.util.Objects;
 
 
-public class AddEmployeeFragment extends Fragment
+public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener
 {
     Spinner spinner;
     EditText empType,empID,empFname,empAge,empEmail;
@@ -51,8 +51,8 @@ public class AddEmployeeFragment extends Fragment
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((this.getActivity());
-        
+        spinner.setOnItemSelectedListener(this);
+
         empType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,9 +64,55 @@ public class AddEmployeeFragment extends Fragment
 
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+    {
+        String textposition =  adapterView.getSelectedItem().toString();
+        empType.setText(textposition);
 
 
+        if(textposition.equalsIgnoreCase("Intern"))
+        {
+            empIntern.setVisibility(View.VISIBLE);
+            empFixed.setVisibility(View.GONE);
+            empComm.setVisibility(View.GONE);
+            empFT.setVisibility(View.GONE);
 
+        }
+        else if(textposition.equalsIgnoreCase("Fixed Based Part Time"))
+        {
+            empIntern.setVisibility(View.GONE);
+            empFixed.setVisibility(View.VISIBLE);
+            empComm.setVisibility(View.GONE);
+            empFT.setVisibility(View.GONE);
+        }
+        else if(textposition.equalsIgnoreCase("Commision Based Part Time"))
+        {
+            empIntern.setVisibility(View.GONE);
+            empFixed.setVisibility(View.GONE);
+            empComm.setVisibility(View.VISIBLE);
+            empFT.setVisibility(View.GONE);
+        }
+        else if(textposition.equalsIgnoreCase("Full Time"))
+        {
+            empIntern.setVisibility(View.GONE);
+            empFixed.setVisibility(View.GONE);
+            empComm.setVisibility(View.GONE);
+            empFT.setVisibility(View.VISIBLE);
+        }
+        //Toast.makeText(view.getContext(),textposition,Toast.LENGTH_SHORT).show();
 
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView)
+    {
+
+    }
 }
