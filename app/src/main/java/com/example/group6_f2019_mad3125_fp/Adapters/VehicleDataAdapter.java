@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -18,6 +19,7 @@ import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import java.util.List;
 
@@ -26,7 +28,15 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
     private Context context;
     private List<Vehicle> myaaraylist;
+    private Employee myemployee;
 
+    public Employee getMyemployee() {
+        return myemployee;
+    }
+
+    public void setMyemployee(Employee myemployee) {
+        this.myemployee = myemployee;
+    }
 
     public VehicleDataAdapter(Context context)
     {
@@ -110,8 +120,8 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
             super(itemView);
 
             mycardview = itemView.findViewById(R.id.newcardvehicle);
-            plate = (TextView)itemView.findViewById(R.id.textViewVehicle1);
-            type = (TextView)itemView.findViewById(R.id.textViewVehicle2);
+            plate = itemView.findViewById(R.id.textViewVehicle1);
+            type = itemView.findViewById(R.id.textViewVehicle2);
 
 
 
@@ -119,6 +129,17 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
         }
     }
 
+    public void deleteItem(int position) {
+
+        Vehicle vehicle = myaaraylist.get(position);
+        EmployeeDB userDatabase = EmployeeDB.getInstance(getContext());
+        List<Vehicle> myvehicles = myemployee.getVehicle();
+        myvehicles.remove(vehicle);
+        userDatabase.daoObjct().update(myemployee);
+        Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+        myaaraylist.remove(position);
+        notifyDataSetChanged();
+    }
 //    public void deleteItem(int position) {
 //
 //        Customer customer = myaaraylist.get(position);

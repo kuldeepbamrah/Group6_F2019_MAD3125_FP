@@ -18,7 +18,6 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.group6_f2019_mad3125_fp.Adapters.EmployeeDataAdapter;
 import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
@@ -28,9 +27,7 @@ import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.group6_f2019_mad3125_fp.R.color.Greencolor;
-
-public class AddBillActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class AddVehicleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
     EditText plate,make,model,type;
     TextView textswitch;
@@ -167,13 +164,13 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
         if(vmodel.equals("") || vmake.equals("") || vplate.equals("") || vtype.equals(""))
         {
             CustomDialog mydialog = new CustomDialog();
-            mydialog.showSingleDialog(AddBillActivity.this,"Please add All Vehicle values to complete the Vehicle Form");
+            mydialog.showSingleDialog(AddVehicleActivity.this,"Please add All Vehicle values to complete the Vehicle Form");
 
         }
         else {
 
 
-showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
+showVehicleDialog(AddVehicleActivity.this,"Are you sure you want to submit?");
 
 
 
@@ -208,7 +205,7 @@ showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
 
                 Vehicle tempobject = new Vehicle(1,vmake,vplate,vmodel,vinsurance,vtype);
 
-                final EmployeeDB uData = EmployeeDB.getInstance(AddBillActivity.this);
+                final EmployeeDB uData = EmployeeDB.getInstance(AddVehicleActivity.this);
 
                 if (myemp.getVehicle() == null)
                 {

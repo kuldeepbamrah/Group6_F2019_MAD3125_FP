@@ -10,18 +10,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.group6_f2019_mad3125_fp.Activities.AddBillActivity;
-import com.example.group6_f2019_mad3125_fp.CustomDialog;
-import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
-import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
-import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 public class LogOutFragment extends Fragment {
 
