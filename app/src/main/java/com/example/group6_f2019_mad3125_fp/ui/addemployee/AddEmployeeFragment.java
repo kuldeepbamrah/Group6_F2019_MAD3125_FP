@@ -51,7 +51,8 @@ public class AddEmployeeFragment extends Fragment
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this.getActivity());
+        spinner.setOnItemSelectedListener((this.getActivity());
+        
         empType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +61,10 @@ public class AddEmployeeFragment extends Fragment
         });
         return view;
 
+
     }
+
+
 
 
 
