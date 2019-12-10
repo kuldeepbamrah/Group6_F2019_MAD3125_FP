@@ -30,7 +30,8 @@ public class LogOutFragment extends Fragment {
 
         showVehicleDialog(getActivity(),"Are you sure you want to log out");
 
-     //   customDialog.showDialog(getActivity(),"Are you sure you want to Log Out?");
+
+     //customDialog.showDialog(getActivity(),"Are you sure you want to Log Out?");
         return null;
     }
 
@@ -42,10 +43,10 @@ public class LogOutFragment extends Fragment {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_dialog_twobutton);
 
-        TextView text = (TextView) dialog.findViewById(R.id.dialogtext);
+        TextView text = dialog.findViewById(R.id.dialogtext);
         text.setText(msg);
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.customButton);
+        Button dialogButton = dialog.findViewById(R.id.customButton);
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +57,7 @@ public class LogOutFragment extends Fragment {
 
             }
         });
-        Button dialogNoButton = (Button) dialog.findViewById(R.id.customButtonNo);
+        Button dialogNoButton = dialog.findViewById(R.id.customButtonNo);
         dialogNoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -18,11 +18,15 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.group6_f2019_mad3125_fp.Adapters.EmployeeDataAdapter;
 import com.example.group6_f2019_mad3125_fp.CustomDialog;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.group6_f2019_mad3125_fp.R.color.Greencolor;
 
@@ -92,7 +96,7 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
 
 
 
-        spinner = (Spinner) findViewById(R.id.spinnervehicle);
+        spinner = findViewById(R.id.spinnervehicle);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.vehicletype, android.R.layout.simple_spinner_item);
@@ -192,10 +196,10 @@ showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_dialog_twobutton);
 
-        TextView text = (TextView) dialog.findViewById(R.id.dialogtext);
+        TextView text = dialog.findViewById(R.id.dialogtext);
         text.setText(msg);
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.customButton);
+        Button dialogButton = dialog.findViewById(R.id.customButton);
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,18 +210,35 @@ showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
 
                 final EmployeeDB uData = EmployeeDB.getInstance(AddBillActivity.this);
 
+                if (myemp.getVehicle() == null)
+                {
+                    List<Vehicle> mybills = new ArrayList<Vehicle>();
+                    mybills.add(tempobject);
+                    myemp.setVehicle(mybills);
+                    uData.daoObjct().update(myemp);
 
-                myemp.setmyVehicle(tempobject);
+
+
+
+                }
+                else
+                {
+                    myemp.setmyVehicle(tempobject);
+                    uData.daoObjct().update(myemp);
+
+
+                }
+
+
                 //Gson gson = new Gson();
 
 
-                uData.daoObjct().update(myemp);
 
                 dialog.dismiss();
                 context.finish();
             }
         });
-        Button dialogNoButton = (Button) dialog.findViewById(R.id.customButtonNo);
+        Button dialogNoButton = dialog.findViewById(R.id.customButtonNo);
         dialogNoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

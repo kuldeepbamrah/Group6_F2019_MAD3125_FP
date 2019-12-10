@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.group6_f2019_mad3125_fp.Activities.EmployeeDetailActivity;
 import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import java.util.List;
 
@@ -104,9 +106,9 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
             super(itemView);
 
             mycardview = itemView.findViewById(R.id.newcard);
-            id = (TextView)itemView.findViewById(R.id.textView2);
-            name = (TextView)itemView.findViewById(R.id.textView3);
-            age = (TextView)itemView.findViewById(R.id.textView5);
+            id = itemView.findViewById(R.id.textView2);
+            name = itemView.findViewById(R.id.textView3);
+            age = itemView.findViewById(R.id.textView5);
 
 
 
@@ -114,15 +116,15 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
         }
     }
 
-//    public void deleteItem(int position) {
-//
-//        Customer customer = myaaraylist.get(position);
-//        UserDatabase userDatabase = UserDatabase.getInstance(getContext());
-//        userDatabase.daoObjct().delete(customer);
-//        Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
-//        myaaraylist.remove(position);
-//        notifyDataSetChanged();
-//    }
+    public void deleteItem(int position) {
+
+        Employee employee = myaaraylist.get(position);
+        EmployeeDB userDatabase = EmployeeDB.getInstance(getContext());
+        userDatabase.daoObjct().delete(employee);
+        Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+        myaaraylist.remove(position);
+        notifyDataSetChanged();
+    }
 
 
 }

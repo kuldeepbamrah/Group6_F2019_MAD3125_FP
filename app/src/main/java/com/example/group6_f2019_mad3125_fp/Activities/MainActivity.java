@@ -42,26 +42,26 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    String json = new String();
+    String json = "";
     String temps;
     LiveData<List<Employee>> myarraylist;
 
-    @Override
-    public void onBackPressed() {
-        showVehicleDialog(this,"Are you sure you want to Log Out");
-    }
+//    @Override
+//    public void onBackPressed() {
+//        this.showlogoutDialog(this,"Are you sure you want to Log Out");
+//    }
 
 
-    public void showVehicleDialog(final Activity context, String msg) {
+    public void showlogoutDialog(final Activity context, String msg) {
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_dialog_twobutton);
 
-        TextView text = (TextView) dialog.findViewById(R.id.dialogtext);
+        TextView text = dialog.findViewById(R.id.dialogtext);
         text.setText(msg);
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.customButton);
+        Button dialogButton = dialog.findViewById(R.id.customButton);
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        Button dialogNoButton = (Button) dialog.findViewById(R.id.customButtonNo);
+        Button dialogNoButton = dialog.findViewById(R.id.customButtonNo);
         dialogNoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

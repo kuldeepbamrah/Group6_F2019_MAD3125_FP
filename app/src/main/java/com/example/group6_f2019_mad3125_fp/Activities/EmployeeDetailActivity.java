@@ -24,12 +24,15 @@ import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDetailActivity extends AppCompatActivity {
 
-    TextView empid, empname, empage, emptype;
+    TextView empid, empname, empage, emptype, detailtext;
     LinearLayout intern,fulltime,parttime;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +46,12 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         intern = findViewById(R.id.layoutintern);
         fulltime = findViewById(R.id.layoutfulltime);
         parttime = findViewById(R.id.layoutparttime);
+        detailtext = findViewById(R.id.detailtext1);
 
         Employee myemp = getIntent().getParcelableExtra("empobject");
         empid.setText(String.valueOf(myemp.getId()));
         empname.setText(myemp.getName());
-        empage.setText(String.valueOf(myemp.getAge()) + "Years");
+        empage.setText(myemp.getAge() + "Years");
         emptype.setText(myemp.getType());
 
         if(myemp.getType().equalsIgnoreCase("intern"))
@@ -65,8 +69,8 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             fulltime.setVisibility(View.VISIBLE);
             TextView salary = findViewById(R.id.textEmpsalaryfulltime);
             TextView totalsalary = findViewById(R.id.textEmptotalsalaryftime);
-            salary.setText(String.valueOf(myemp.getSalary()) + " $ + " + String.valueOf(myemp.getBonus()) + " $ (C)" );
-            String totalftimesalary = String.valueOf(myemp.getSalary() + myemp.getBonus()) + " $";
+            salary.setText(myemp.getSalary() + " $ + " + myemp.getBonus() + " $ (C)" );
+            String totalftimesalary = (myemp.getSalary() + myemp.getBonus()) + " $";
             totalsalary.setText(totalftimesalary);
 
         }
@@ -78,9 +82,9 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
             TextView commision = findViewById(R.id.textEmpcommisionptime);
             Double salary = myemp.getHoursWorked() * myemp.getRate();
-            salaryptime.setText(String.valueOf(salary) + " $ (" + String.valueOf(myemp.getHoursWorked()) + " Hrs * " + String.valueOf(myemp.getRate()) + " $)" );
+            salaryptime.setText(salary + " $ (" + myemp.getHoursWorked() + " Hrs * " + myemp.getRate() + " $)" );
             String totalptimesalary = String.valueOf(salary + myemp.getFixedAmount());
-            commision.setText(String.valueOf(myemp.getFixedAmount()) + " $");
+            commision.setText(myemp.getFixedAmount() + " $");
             totalsalaryptime.setText(totalptimesalary + " $");
 
         }
@@ -92,10 +96,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
             TextView commisionpercent = findViewById(R.id.textEmpcommisionptime);
             Double salary = myemp.getHoursWorked() * myemp.getRate();
-            salaryptime.setText(String.valueOf(salary) + " $ (" + String.valueOf(myemp.getHoursWorked()) + " Hrs * " + String.valueOf(myemp.getRate()) + " $)" );
+            salaryptime.setText(salary + " $ (" + myemp.getHoursWorked() + " Hrs * " + myemp.getRate() + " $)" );
             Double commision = salary * myemp.getCommissionPercent()/100;
             String totalpctimesalary = String.valueOf(salary + commision);
-            commisionpercent.setText(String.valueOf(myemp.getCommissionPercent()) + " %");
+            commisionpercent.setText(myemp.getCommissionPercent() + " %");
             totalsalaryptime.setText(totalpctimesalary + " $");
 
         }
@@ -106,10 +110,15 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
         if (vehicles ==  null)
         {
+            detailtext.setText("No vehicles Registered");
+            //List<Vehicle> mybills = new ArrayList<Vehicle>();
+
             Toast.makeText(this,"No vehicle",Toast.LENGTH_SHORT).show();
 
         }
         else {
+
+
 
             RecyclerView recyclerView = findViewById(R.id.recycler_vehicle);
             final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
