@@ -140,52 +140,64 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         {
             case R.id.addCustomer:
 
-                EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
-                Integer x = employeeDB.daoObjct().count();
+                createemployee();
 
-                String empname = empFname.getText().toString();
-                String empemail = empEmail.getText().toString();
-                String empage =  empAge.getText().toString();
-                String emptype = empType.getText().toString();
-
-                switch (emptype)
-                {
-                    case "Intern":
-
-                        String schoolname = empSchool.getText().toString();
-                        Employee myemp = new Employee(x+1,empname,Integer.parseInt(empage),schoolname,emptype,0.0,0.0,0.0,0,0.0,0);
-                                employeeDB.daoObjct().insert(myemp);
-                                break;
-                    case "Full Time":
-                        Double salaryftime = Double.parseDouble(empSalary.getText().toString());
-                        Double bonusftime = Double.parseDouble(empBonus.getText().toString());
-                        Employee myempftime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,salaryftime,bonusftime,0.0,0,0.0,0);
-                        employeeDB.daoObjct().insert(myempftime);
-                        break;
-                    case "Commision Based Part Time":
-                        Integer hourscptime = Integer.parseInt(empHoursWorked.getText().toString());
-                        Double ratecptime = Double.parseDouble(empHourlyRate.getText().toString());
-                        Integer cmsncptime = Integer.parseInt(empCommision.getText().toString());
-
-                        Employee myempcptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratecptime,hourscptime,0.0,cmsncptime);
-                        employeeDB.daoObjct().insert(myempcptime);
-                        break;
-                    case "Fixed Based Part Time":
-                        Integer hoursfptime = Integer.parseInt(empHoursWorkedFT.getText().toString());
-                        Double ratefptime = Double.parseDouble(empHourlyRateFT.getText().toString());
-                        Double fixedamountcptime = Double.parseDouble(empFixedAmount.getText().toString());
-
-                        Employee myempfptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratefptime,hoursfptime,fixedamountcptime,0);
-                        employeeDB.daoObjct().insert(myempfptime);
-                        break;
-
-                }
 
 
                 break;
 
             case R.id.editTextEmpType:
                 spinner.performClick();
+                break;
+
+        }
+
+    }
+
+
+
+    public void createemployee()
+    {
+        EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
+        Integer x = employeeDB.daoObjct().count();
+
+
+        String empname = empFname.getText().toString();
+        String empemail = empEmail.getText().toString();
+        String empage =  empAge.getText().toString();
+        String emptype = empType.getText().toString();
+
+
+
+        switch (emptype)
+        {
+            case "Intern":
+
+                String schoolname = empSchool.getText().toString();
+                Employee myemp = new Employee(x+1,empname,Integer.parseInt(empage),schoolname,emptype,0.0,0.0,0.0,0,0.0,0);
+                employeeDB.daoObjct().insert(myemp);
+                break;
+            case "FullTime":
+                Double salaryftime = Double.parseDouble(empSalary.getText().toString());
+                Double bonusftime = Double.parseDouble(empBonus.getText().toString());
+                Employee myempftime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,salaryftime,bonusftime,0.0,0,0.0,0);
+                employeeDB.daoObjct().insert(myempftime);
+                break;
+            case "PartTime / Commissioned":
+                Integer hourscptime = Integer.parseInt(empHoursWorked.getText().toString());
+                Double ratecptime = Double.parseDouble(empHourlyRate.getText().toString());
+                Integer cmsncptime = Integer.parseInt(empCommision.getText().toString());
+
+                Employee myempcptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratecptime,hourscptime,0.0,cmsncptime);
+                employeeDB.daoObjct().insert(myempcptime);
+                break;
+            case "PartTime / Fixed Amount":
+                Integer hoursfptime = Integer.parseInt(empHoursWorkedFT.getText().toString());
+                Double ratefptime = Double.parseDouble(empHourlyRateFT.getText().toString());
+                Double fixedamountcptime = Double.parseDouble(empFixedAmount.getText().toString());
+
+                Employee myempfptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratefptime,hoursfptime,fixedamountcptime,0);
+                employeeDB.daoObjct().insert(myempfptime);
                 break;
 
         }
