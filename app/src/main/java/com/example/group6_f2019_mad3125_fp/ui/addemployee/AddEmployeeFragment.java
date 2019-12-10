@@ -103,6 +103,7 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         {
             empIntern.setVisibility(View.GONE);
             empFixed.setVisibility(View.GONE);
+            
             empComm.setVisibility(View.GONE);
             empFT.setVisibility(View.VISIBLE);
         }
