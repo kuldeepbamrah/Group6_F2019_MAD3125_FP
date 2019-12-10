@@ -22,7 +22,7 @@ import java.util.Objects;
 public class AddEmployeeFragment extends Fragment
 {
     Spinner spinner;
-    EditText empType;
+    EditText empType,empID,empFname,empAge,empEmail;
 
     @Nullable
     @Override
@@ -30,6 +30,12 @@ public class AddEmployeeFragment extends Fragment
 
         View view = inflater.inflate(R.layout.fragment_addemployee,container,false);
         empType = view.findViewById(R.id.editTextEmpType);
+        empID = view.findViewById(R.id.textEmpID);
+        empFname = view.findViewById(R.id.editTextEmpfname);
+        empAge = view.findViewById(R.id.textEmpAge);
+        empEmail = view.findViewById(R.id.editTextEmpemail);
+        
+
 
         spinner =view.findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
