@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
+        android:lineSpacingExtra="10dp"
         android:padding="10dp"
         android:text="Are you sure you want to Exit from this page ?"
         android:textAlignment="center"
