@@ -19,8 +19,7 @@ import com.example.group6_f2019_mad3125_fp.R;
 import java.util.Objects;
 
 
-public class AddEmployeeFragment extends Fragment
-{
+public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     Spinner spinner;
     EditText empType,empID,empFname,empAge,empEmail;
     View empFT,empComm,empIntern,empFixed;
@@ -51,7 +50,7 @@ public class AddEmployeeFragment extends Fragment
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener((this.getActivity());
+       // spinner.setOnItemSelectedListener(this);
         
         empType.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,8 +64,13 @@ public class AddEmployeeFragment extends Fragment
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+    }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
-
+    }
 }

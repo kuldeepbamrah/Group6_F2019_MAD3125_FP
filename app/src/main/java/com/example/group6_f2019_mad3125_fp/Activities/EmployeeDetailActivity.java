@@ -1,6 +1,7 @@
 package com.example.group6_f2019_mad3125_fp.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -117,6 +118,19 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             recyclerView.setAdapter(vehicleDataAdapter);
 
         }
+
+
+        final EmployeeDB uData = EmployeeDB.getInstance(this);
+
+
+        uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Customer>() {
+            @Override
+            public void onChanged(@Nullable Customer customer) {
+                List<Bill> bills = customer.getBill();
+                myadapter.setMyaaraylist(bills);
+                myadapter.notifyDataSetChanged();
+            }
+        });
 
 
 

@@ -192,8 +192,8 @@ public class Employee implements Parcelable {
         return vehicle;
     }
 
-    public void setVehicle(List<Vehicle> vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle.add(vehicle);
     }
 
     public String getSchoolName() {

@@ -15,7 +15,11 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.group6_f2019_mad3125_fp.CustomDialog;
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import static com.example.group6_f2019_mad3125_fp.R.color.Greencolor;
 
@@ -49,6 +53,12 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
 
 
         insurance = findViewById(R.id.switchVehicleInsurance);
+
+        textswitch.setVisibility(View.VISIBLE);
+        textswitch.setText("False");
+        textswitch.setBackgroundColor(Color.WHITE);
+        textswitch.setTextColor(Color.RED);
+        vinsurance = Boolean.FALSE;
 
         insurance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("ResourceAsColor")
@@ -126,18 +136,8 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.switchVehicleInsurance:
-                if (insurance.isChecked())
-                {
-                    textswitch.setText("True");
-                    textswitch.setTextColor(Greencolor);
-                }
-                else
-                {
-                    textswitch.setText("False");
-                    textswitch.setTextColor(R.color.Redcolor);
-
-                }
+            case R.id.buttonvehicle:
+                validationvehicle();
                 break;
             case R.id.editTextVehicleType:
                 spinner.performClick();
@@ -146,5 +146,54 @@ public class AddBillActivity extends AppCompatActivity implements AdapterView.On
 
         }
     }
+
+
+    public void validationvehicle()
+    {
+        vmake = make.getText().toString();
+        vmodel = model.getText().toString();
+        vplate = plate.getText().toString();
+        vtype = type.getText().toString();
+
+
+
+        if(vmodel.equals("") || vmake.equals("") || vplate.equals("") || vtype.equals(""))
+        {
+            CustomDialog mydialog = new CustomDialog();
+            mydialog.showSingleDialog(AddBillActivity.this,"Please add All Vehicle values to complete the Vehicle Form");
+
+        }
+        else {
+
+            CustomDialog mydialog = new CustomDialog();
+            mydialog.showVehicleDialog(AddBillActivity.this,"Are you sure you want to submit?");
+
+
+
+
+            //Toast.makeText(AddCustomerActivity.this, "Added obj", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void createvehicle()
+    {
+
+        Employee myemp = getIntent().getParcelableExtra("empobject");
+
+        Vehicle tempobject = new Vehicle(1,vmake,vplate,vmodel,vinsurance,vtype);
+
+        final EmployeeDB uData = EmployeeDB.getInstance(AddBillActivity.this);
+
+
+        myemp.setVehicle(tempobject);
+        //Gson gson = new Gson();
+
+
+        uData.daoObjct().update(myemp);
+
+
+    }
 }
+
+
 
