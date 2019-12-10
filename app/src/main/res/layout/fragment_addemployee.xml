@@ -8,8 +8,7 @@
     android:layout_height="match_parent">
 
     <ScrollView android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android" >
+        android:layout_width="match_parent">
 
     <LinearLayout
 
@@ -73,9 +72,10 @@
                     android:id="@+id/editTextEmpID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:singleLine="true"
+                    android:backgroundTint="@color/cardview_dark_background"
+                    android:clickable="false"
                     android:inputType="number"
-                    android:backgroundTint="@color/cardview_dark_background"/>
+                    android:singleLine="true" />
 
             </androidx.cardview.widget.CardView>
 
@@ -580,7 +580,7 @@
 
 
         <Button
-            android:id="@+id/buttoncustomer"
+            android:id="@+id/addCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
