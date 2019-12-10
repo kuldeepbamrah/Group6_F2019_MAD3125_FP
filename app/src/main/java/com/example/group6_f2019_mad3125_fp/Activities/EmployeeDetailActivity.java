@@ -33,6 +33,40 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     LinearLayout intern,fulltime,parttime;
 
 
+    @Override
+    protected void onRestart() {
+
+        Employee myemp = getIntent().getParcelableExtra("empobject");
+
+
+        List<Vehicle> vehicles = myemp.getVehicle();
+
+            RecyclerView recyclerView = findViewById(R.id.recycler_vehicle);
+            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+          vehicleDataAdapter.setMyaaraylist(vehicles);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.setAdapter(vehicleDataAdapter);
+
+            final EmployeeDB uData = EmployeeDB.getInstance(this);
+
+
+            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+                @Override
+                public void onChanged(@Nullable Employee employee) {
+                    List<Vehicle> bills = employee.getVehicle();
+                    vehicleDataAdapter.setMyaaraylist(bills);
+                    vehicleDataAdapter.notifyDataSetChanged();
+                }
+            });
+
+        super.onRestart();
+
+
+    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,14 +164,14 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             final EmployeeDB uData = EmployeeDB.getInstance(this);
 
 
-            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
-                @Override
-                public void onChanged(@Nullable Employee employee) {
-                    List<Vehicle> bills = employee.getVehicle();
-                    vehicleDataAdapter.setMyaaraylist(bills);
-                    vehicleDataAdapter.notifyDataSetChanged();
-                }
-            });
+//            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+//                @Override
+//                public void onChanged(@Nullable Employee employee) {
+//                    List<Vehicle> bills = employee.getVehicle();
+//                    vehicleDataAdapter.setMyaaraylist(bills);
+//                    vehicleDataAdapter.notifyDataSetChanged();
+//                }
+//            });
 
         }
 
