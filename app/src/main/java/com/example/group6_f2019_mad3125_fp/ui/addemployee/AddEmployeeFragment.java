@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
+import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import java.util.Objects;
 
@@ -23,7 +25,7 @@ import java.util.Objects;
 public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener
 {
     Spinner spinner;
-    EditText empType,empID,empFname,empAge,empEmail;
+    EditText empType,empID,empFname,empAge,empEmail,empSchool,empSalary,empBonus,empFixedAmount,empHoursWorked,empHoursWorkedFT,empCommision,empHourlyRate, empHourlyRateFT;
     View empFT,empComm,empIntern,empFixed;
     Button addEmp;
 
@@ -34,6 +36,9 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         View view = inflater.inflate(R.layout.fragment_addemployee,container,false);
         empType = view.findViewById(R.id.editTextEmpType);
         empID = view.findViewById(R.id.textEmpID);
+        EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
+        Integer x = employeeDB.daoObjct().count();
+        empID.setText(x);
         empFname = view.findViewById(R.id.editTextEmpfname);
         empAge = view.findViewById(R.id.textEmpAge);
         empEmail = view.findViewById(R.id.editTextEmpemail);
@@ -42,6 +47,16 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
         empIntern = view.findViewById(R.id.Intern);
         empFixed  = view.findViewById(R.id.FixedBasedPartTime);
         addEmp = view.findViewById(R.id.addCustomer);
+        empSchool = view.findViewById(R.id.textEmpschool);
+        empSalary = view.findViewById(R.id.editTextSalary);
+        empBonus = view.findViewById(R.id.editTextBonus);
+        empFixedAmount = view.findViewById(R.id.editTextFixed);
+        empHoursWorked = view.findViewById(R.id.editTextHoursWorked);
+        empHoursWorkedFT = view.findViewById(R.id.editTextHoursWorkedFT);
+        empCommision  =view.findViewById(R.id.editTextCommision);
+        empHourlyRate = view.findViewById(R.id.editTextHrate);
+        empHourlyRateFT = view.findViewById(R.id.editTextHrateFT);
+
 
 
 
@@ -120,9 +135,53 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
     @Override
     public void onClick(View view)
     {
+        
         switch (view.getId())
         {
             case R.id.addCustomer:
+
+                EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
+                Integer x = employeeDB.daoObjct().count();
+
+                String empname = empFname.getText().toString();
+                String empemail = empEmail.getText().toString();
+                String empage =  empAge.getText().toString();
+                String emptype = empType.getText().toString();
+
+                switch (emptype)
+                {
+                    case "Intern":
+
+                        String schoolname = empSchool.getText().toString();
+                        Employee myemp = new Employee(x+1,empname,Integer.parseInt(empage),schoolname,emptype,0.0,0.0,0.0,0,0.0,0);
+                                employeeDB.daoObjct().insert(myemp);
+                                break;
+                    case "Full Time":
+                        Double salaryftime = Double.parseDouble(empSalary.getText().toString());
+                        Double bonusftime = Double.parseDouble(empBonus.getText().toString());
+                        Employee myempftime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,salaryftime,bonusftime,0.0,0,0.0,0);
+                        employeeDB.daoObjct().insert(myempftime);
+                        break;
+                    case "Commision Based Part Time":
+                        Integer hourscptime = Integer.parseInt(empHoursWorked.getText().toString());
+                        Double ratecptime = Double.parseDouble(empHourlyRate.getText().toString());
+                        Integer cmsncptime = Integer.parseInt(empCommision.getText().toString());
+
+                        Employee myempcptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratecptime,hourscptime,0.0,cmsncptime);
+                        employeeDB.daoObjct().insert(myempcptime);
+                        break;
+                    case "Fixed Based Part Time":
+                        Integer hoursfptime = Integer.parseInt(empHoursWorkedFT.getText().toString());
+                        Double ratefptime = Double.parseDouble(empHourlyRateFT.getText().toString());
+                        Double fixedamountcptime = Double.parseDouble(empFixedAmount.getText().toString());
+
+                        Employee myempfptime = new Employee(x+1,empname,Integer.parseInt(empage),"",emptype,0.0,0.0,ratefptime,hoursfptime,fixedamountcptime,0);
+                        employeeDB.daoObjct().insert(myempfptime);
+                        break;
+
+                }
+
+
                 break;
 
             case R.id.textEmptype:
