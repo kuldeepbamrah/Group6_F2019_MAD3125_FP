@@ -139,6 +139,7 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
         employeeDB.daoObjct().update(myemployee);
         Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
         myaaraylist.remove(position);
+        notifyItemRemoved(position);
         notifyDataSetChanged();
 
     }

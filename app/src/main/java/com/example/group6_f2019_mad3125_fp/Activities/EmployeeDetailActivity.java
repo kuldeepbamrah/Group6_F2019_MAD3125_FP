@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,56 +35,61 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     LinearLayout intern,fulltime,parttime;
     Employee employeetemp;
     int x;
+    public static Activity fa;
 
 
-//    @Override
-//    protected void onResume() {
-//
-//        final Employee myemp = getIntent().getParcelableExtra("empobject");
-//        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
-//        List<Employee> employees = employeeDB.daoObjct().getDefault();
-//        x = employees.indexOf(myemp);
-//        x = getIntent().getIntExtra("empindex",0);
-//        //Toast.makeText(this,"onResume"+x,Toast.LENGTH_SHORT).show();
-//
-//        employeetemp = employees.get(x);
-//        List<Vehicle> vehicles = myemp.getVehicle();
-//
-//            RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
-//            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
-//          vehicleDataAdapter.setMyaaraylist(vehicles);
-//            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//            recyclerView1.setLayoutManager(layoutManager);
-//            recyclerView1.setAdapter(vehicleDataAdapter);
-//
-//
-//        ItemTouchHelper itemTouchHelper = new
-//                ItemTouchHelper(new SwipeToDeleteCallbackForVehicle(vehicleDataAdapter));
-//        itemTouchHelper.attachToRecyclerView(recyclerView1);
-//
-//            final EmployeeDB uData = EmployeeDB.getInstance(this);
-//
-//
-//            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
-//                @Override
-//                public void onChanged(@Nullable Employee employee) {
-//                    List<Vehicle> bills = employee.getVehicle();
-//                    vehicleDataAdapter.setMyaaraylist(bills);
-//                    vehicleDataAdapter.setMyemployee(employeetemp);
-//                    vehicleDataAdapter.notifyDataSetChanged();
-//                }
-//            });
-//
-//        super.onResume();
-//
-//
-//    }
+    @Override
+    protected void onResume() {
+
+        final Employee myemp = getIntent().getParcelableExtra("empobject");
+        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+        List<Employee> employees = employeeDB.daoObjct().getDefault();
+        x = employees.indexOf(myemp);
+        x = getIntent().getIntExtra("empindex",0);
+
+
+        employeetemp = employees.get(x);
+        List<Vehicle> vehicles = myemp.getVehicle();
+
+        if(vehicles!=null) {
+            RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
+            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+            vehicleDataAdapter.setMyaaraylist(vehicles);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            recyclerView1.setLayoutManager(layoutManager);
+            recyclerView1.setAdapter(vehicleDataAdapter);
+
+
+            ItemTouchHelper itemTouchHelper = new
+                    ItemTouchHelper(new SwipeToDeleteCallbackForVehicle(vehicleDataAdapter));
+            itemTouchHelper.attachToRecyclerView(recyclerView1);
+
+            final EmployeeDB uData = EmployeeDB.getInstance(this);
+
+
+            uData.daoObjct().getCurrentUserDetails(employeetemp.getId()).observe(this, new Observer<Employee>() {
+                @Override
+                public void onChanged(@Nullable Employee employee) {
+                    List<Vehicle> bills = employee.getVehicle();
+                    vehicleDataAdapter.setMyaaraylist(bills);
+                    vehicleDataAdapter.setMyemployee(employeetemp);
+                    vehicleDataAdapter.notifyDataSetChanged();
+                }
+            });
+        }
+
+        super.onResume();
+
+
+    }
 
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        fa = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_detail);
         Toast.makeText(this,"Oncreate called",Toast.LENGTH_SHORT).show();
@@ -96,13 +102,25 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         parttime = findViewById(R.id.layoutparttime);
         detailtext = findViewById(R.id.detailtext1);
 
-        Employee myemp = getIntent().getParcelableExtra("empobject");
-        empid.setText(String.valueOf(myemp.getId()));
-        empname.setText(myemp.getName());
-        empage.setText(myemp.getAge() + "Years");
-        emptype.setText(myemp.getType());
 
-        if(myemp.getType().equalsIgnoreCase("intern"))
+        final Employee myemp = getIntent().getParcelableExtra("empobject");
+     EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+      List<Employee> employees = employeeDB.daoObjct().getDefault();
+      x = employees.indexOf(myemp);
+      x = getIntent().getIntExtra("empindex",0);
+//        //Toast.makeText(this,"onResume"+x,Toast.LENGTH_SHORT).show();
+
+        employeetemp = employees.get(x);
+
+
+
+       // Employee myemp = getIntent().getParcelableExtra("empobject");
+        empid.setText(String.valueOf(employeetemp.getId()));
+        empname.setText(employeetemp.getName());
+        empage.setText(employeetemp.getAge() + "Years");
+        emptype.setText(employeetemp.getType());
+
+        if(employeetemp.getType().equalsIgnoreCase("intern"))
         {
 
             intern.setVisibility(View.VISIBLE);
@@ -111,7 +129,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
         }
 
-        else if(myemp.getType().equalsIgnoreCase("fulltime"))
+        else if(employeetemp.getType().equalsIgnoreCase("fulltime"))
         {
 
             fulltime.setVisibility(View.VISIBLE);
@@ -122,39 +140,39 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             totalsalary.setText(totalftimesalary);
 
         }
-        else if(myemp.getType().equalsIgnoreCase("PartTime / Fixed Amount"))
+        else if(employeetemp.getType().equalsIgnoreCase("PartTime / Fixed Amount"))
         {
 
             parttime.setVisibility(View.VISIBLE);
             TextView salaryptime = findViewById(R.id.textEmpsalaryparttime);
             TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
             TextView commision = findViewById(R.id.textEmpcommisionptime);
-            Double salary = myemp.getHoursWorked() * myemp.getRate();
-            salaryptime.setText(salary + " $ (" + myemp.getHoursWorked() + " Hrs * " + myemp.getRate() + " $)" );
-            String totalptimesalary = String.valueOf(salary + myemp.getFixedAmount());
-            commision.setText(myemp.getFixedAmount() + " $");
+            Double salary = employeetemp.getHoursWorked() * employeetemp.getRate();
+            salaryptime.setText(salary + " $ (" + employeetemp.getHoursWorked() + " Hrs * " + employeetemp.getRate() + " $)" );
+            String totalptimesalary = String.valueOf(salary + employeetemp.getFixedAmount());
+            commision.setText(employeetemp.getFixedAmount() + " $");
             totalsalaryptime.setText(totalptimesalary + " $");
 
         }
-        else if(myemp.getType().equalsIgnoreCase("PartTime / Commissioned"))
+        else if(employeetemp.getType().equalsIgnoreCase("PartTime / Commissioned"))
         {
 
             parttime.setVisibility(View.VISIBLE);
             TextView salaryptime = findViewById(R.id.textEmpsalaryparttime);
             TextView totalsalaryptime = findViewById(R.id.textEmptotalsalaryptime);
             TextView commisionpercent = findViewById(R.id.textEmpcommisionptime);
-            Double salary = myemp.getHoursWorked() * myemp.getRate();
-            salaryptime.setText(salary + " $ (" + myemp.getHoursWorked() + " Hrs * " + myemp.getRate() + " $)" );
+            Double salary = employeetemp.getHoursWorked() * myemp.getRate();
+            salaryptime.setText(salary + " $ (" + employeetemp.getHoursWorked() + " Hrs * " + employeetemp.getRate() + " $)" );
             Double commision = salary * myemp.getCommissionPercent()/100;
             String totalpctimesalary = String.valueOf(salary + commision);
-            commisionpercent.setText(myemp.getCommissionPercent() + " %");
+            commisionpercent.setText(employeetemp.getCommissionPercent() + " %");
             totalsalaryptime.setText(totalpctimesalary + " $");
 
         }
 
 
 
-        List<Vehicle> vehicles = myemp.getVehicle();
+        List<Vehicle> vehicles = employeetemp.getVehicle();
 
         if (vehicles ==  null)
         {
@@ -171,7 +189,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
             final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
             vehicleDataAdapter.setMyaaraylist(vehicles);
-            vehicleDataAdapter.setMyemployee(myemp);
+            vehicleDataAdapter.setMyemployee(employeetemp);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView1.setLayoutManager(layoutManager);
             recyclerView1.setAdapter(vehicleDataAdapter);
@@ -184,7 +202,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             final EmployeeDB uData = EmployeeDB.getInstance(this);
 
 
-            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+            uData.daoObjct().getCurrentUserDetails(employeetemp.getId()).observe(this, new Observer<Employee>() {
                 @Override
                 public void onChanged(@Nullable Employee employee) {
                     List<Vehicle> bills = employee.getVehicle();

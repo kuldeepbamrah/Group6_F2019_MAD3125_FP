@@ -18,6 +18,7 @@ import com.example.group6_f2019_mad3125_fp.ModelClasses.Employee;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
+import java.util.EnumMap;
 import java.util.List;
 
 
@@ -119,11 +120,15 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
 
     public void deleteItem(int position) {
 
-        Employee employee = myaaraylist.get(position);
         EmployeeDB userDatabase = EmployeeDB.getInstance(getContext());
+        List<Employee> employees = userDatabase.daoObjct().getDefault();
+
+        Employee employee = employees.get(position);
+
         userDatabase.daoObjct().delete(employee);
         Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
         myaaraylist.remove(position);
+        notifyItemRemoved(position);
         notifyDataSetChanged();
     }
 

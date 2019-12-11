@@ -25,6 +25,7 @@ import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener
@@ -297,7 +298,7 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
             public void onClick(View v) {
 
                 EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
-                Integer x = employeeDB.daoObjct().count();
+                Integer x = generateRandomNumberBetweenRange(6,90);
 
 
 
@@ -355,5 +356,8 @@ public class AddEmployeeFragment extends Fragment implements AdapterView.OnItemS
 
         dialog.show();
 
+    }
+    private int generateRandomNumberBetweenRange(int from, int to){
+        return ThreadLocalRandom.current().nextInt(from, to);
     }
 }

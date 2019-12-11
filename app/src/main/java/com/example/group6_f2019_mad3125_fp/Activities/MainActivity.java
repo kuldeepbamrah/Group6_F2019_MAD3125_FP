@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         {
             Toast.makeText(MainActivity.this,"json read successful",Toast.LENGTH_LONG).show();
             final EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+            //employeeDB.clearAllTables();
             final Integer count = employeeDB.daoObjct().count();
             if(count == 0)
             {
