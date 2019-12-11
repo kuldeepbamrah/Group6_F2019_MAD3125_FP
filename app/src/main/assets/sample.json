@@ -67,7 +67,15 @@
         "id": 4,
         "name": "Rizul Goyal",
         "age": 25,
-        "vehicle": null,
+        "vehicle": [{
+            "@class": "ca.lambton.payroll.vehicle.Motorcycle",
+            "id": 2,
+            "make": "Chevrolet",
+            "plate": "CFDR-171 ",
+            "model": "MODEL 2",
+            "insurance": true,
+            "type": "Car"
+        }],
         "rate": 40.0,
         "hoursWorked": 178,
         "commissionPercent": 20,

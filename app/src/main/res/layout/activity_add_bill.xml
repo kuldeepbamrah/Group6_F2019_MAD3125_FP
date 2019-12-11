@@ -270,7 +270,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary"
-            android:text="Click to Add Bill"
+            android:text="Click to Add Vehicle"
             android:textColor="@android:color/background_light"
             android:textSize="20dp"></Button>
 

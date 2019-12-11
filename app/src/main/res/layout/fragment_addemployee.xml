@@ -557,7 +557,7 @@
             android:layout_margin="10dp"
             android:background="@color/colorAccent"
             android:backgroundTint="@color/colorPrimaryDark"
-            android:text="Click to Add Customer"
+            android:text="Click to Add Employee"
             android:textColor="@android:color/background_light"
             android:textSize="20dp"></Button>
 
