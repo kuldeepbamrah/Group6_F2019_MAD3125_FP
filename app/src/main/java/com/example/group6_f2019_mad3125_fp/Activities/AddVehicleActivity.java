@@ -26,6 +26,7 @@ import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class AddVehicleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -40,13 +41,14 @@ public class AddVehicleActivity extends AppCompatActivity implements AdapterView
     String vtype ;
     Boolean vinsurance;
 
+    int x;
     Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bill);
-
+        x= generateRandomNumberBetweenRange(6,90);
         textswitch = findViewById(R.id.textswitch);
         plate = findViewById(R.id.editTextVehiclePlate);
         make = findViewById(R.id.editTextVehicleMake);
@@ -203,7 +205,7 @@ showVehicleDialog(AddVehicleActivity.this,"Are you sure you want to submit?");
 
                 Employee myemp = getIntent().getParcelableExtra("empobjectvehicle");
 
-                Vehicle tempobject = new Vehicle(1,vmake,vplate,vmodel,vinsurance,vtype);
+                Vehicle tempobject = new Vehicle(x,vmake,vplate,vmodel,vinsurance,vtype);
 
                 final EmployeeDB uData = EmployeeDB.getInstance(AddVehicleActivity.this);
 
@@ -213,10 +215,6 @@ showVehicleDialog(AddVehicleActivity.this,"Are you sure you want to submit?");
                     mybills.add(tempobject);
                     myemp.setVehicle(mybills);
                     uData.daoObjct().update(myemp);
-
-
-
-
                 }
                 else
                 {
@@ -246,6 +244,9 @@ showVehicleDialog(AddVehicleActivity.this,"Are you sure you want to submit?");
 
         dialog.show();
 
+    }
+    private int generateRandomNumberBetweenRange(int from, int to){
+        return ThreadLocalRandom.current().nextInt(from, to);
     }
 }
 

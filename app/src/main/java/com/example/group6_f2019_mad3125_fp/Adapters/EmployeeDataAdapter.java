@@ -77,6 +77,7 @@ public class EmployeeDataAdapter extends RecyclerView.Adapter<EmployeeDataAdapte
 
                 Intent myintent = new Intent(context, EmployeeDetailActivity.class);
                 myintent.putExtra("empobject", mydata);
+                myintent.putExtra("empindex",position);
                 context.startActivity(myintent);
                 //  Toast.makeText(context,"position = "+position,Toast.LENGTH_LONG).show();
 

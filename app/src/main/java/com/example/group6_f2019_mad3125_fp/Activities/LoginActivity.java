@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.username_input);
         pass = findViewById(R.id.pass);
 
+        username.setText(R.string.login);
+        pass.setText(R.string.pass);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

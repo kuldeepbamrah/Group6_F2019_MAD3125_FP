@@ -32,14 +32,21 @@ public class EmployeeDetailActivity extends AppCompatActivity {
 
     TextView empid, empname, empage, emptype, detailtext;
     LinearLayout intern,fulltime,parttime;
+    Employee employeetemp;
+    int x;
 
 
     @Override
-    protected void onRestart() {
+    protected void onResume() {
 
         final Employee myemp = getIntent().getParcelableExtra("empobject");
+        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+        List<Employee> employees = employeeDB.daoObjct().getDefault();
+        x = employees.indexOf(myemp);
+        x = getIntent().getIntExtra("empindex",0);
+        //Toast.makeText(this,"onResume"+x,Toast.LENGTH_SHORT).show();
 
-
+        employeetemp = employees.get(x);
         List<Vehicle> vehicles = myemp.getVehicle();
 
             RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
@@ -62,12 +69,12 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 public void onChanged(@Nullable Employee employee) {
                     List<Vehicle> bills = employee.getVehicle();
                     vehicleDataAdapter.setMyaaraylist(bills);
-                    vehicleDataAdapter.setMyemployee(myemp);
+                    vehicleDataAdapter.setMyemployee(employeetemp);
                     vehicleDataAdapter.notifyDataSetChanged();
                 }
             });
 
-        super.onRestart();
+        super.onResume();
 
 
     }
@@ -79,7 +86,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_detail);
-
+        Toast.makeText(this,"Oncreate called",Toast.LENGTH_SHORT).show();
         empid = findViewById(R.id.textEmpID);
         empname = findViewById(R.id.textEmpName);
         empage = findViewById(R.id.textEmpAge);
@@ -211,8 +218,10 @@ public class EmployeeDetailActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.vehicle_add:
-                Employee emptemp =getIntent().getParcelableExtra("empobject");
-
+                //Employee emptemp =getIntent().getParcelableExtra("empobject");
+                EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+                List<Employee> employees = employeeDB.daoObjct().getDefault();
+                Employee emptemp = employees.get(getIntent().getIntExtra("empindex",0));
                 Intent myintent = new Intent(this, AddVehicleActivity.class);
                 myintent.putExtra("empobjectvehicle",emptemp);
                 startActivity(myintent);
