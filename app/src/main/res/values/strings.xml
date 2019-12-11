@@ -8,6 +8,8 @@
     <string name="action_settings">Settings</string>
 <string name="login">user@employee.com</string>
     <string name="pass">s3cr3t</string>
+    <string name="EmpDetails">Employee Details</string>
+    <string name="addEmp">Add New Vehicle</string>
     <string name="menu_home">Home</string>
     <string name="menu_employyelist">List Of Employees</string>
     <string name="menu_addemployee">Add Employee</string>

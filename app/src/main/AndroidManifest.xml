@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Activities.AddVehicleActivity"></activity>
+        <activity android:name=".Activities.AddVehicleActivity"
+            android:label="@string/addEmp"
+            android:theme="@style/AppTheme">
+        </activity>
         <activity android:name=".Activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.EmployeeDetailActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme"
+            android:label="@string/EmpDetails"/>
         <activity android:name=".Activities.LoginActivity"></activity>
         <activity
             android:name=".Activities.MainActivity"

@@ -3,6 +3,7 @@ package com.example.group6_f2019_mad3125_fp.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -46,6 +47,7 @@ public class AddVehicleActivity extends AppCompatActivity implements AdapterView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_bill);
         x= generateRandomNumberBetweenRange(6,90);
