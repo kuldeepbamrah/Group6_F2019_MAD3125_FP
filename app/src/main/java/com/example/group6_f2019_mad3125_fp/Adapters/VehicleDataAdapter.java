@@ -21,6 +21,7 @@ import com.example.group6_f2019_mad3125_fp.ModelClasses.Vehicle;
 import com.example.group6_f2019_mad3125_fp.R;
 import com.example.group6_f2019_mad3125_fp.RoomDB.EmployeeDB;
 
+import java.util.EnumMap;
 import java.util.List;
 
 
@@ -132,13 +133,15 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
     public void deleteItem(int position) {
 
         Vehicle vehicle = myaaraylist.get(position);
-        EmployeeDB userDatabase = EmployeeDB.getInstance(getContext());
+        EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
+        List<Employee> employees = employeeDB.daoObjct().getDefault();
         List<Vehicle> myvehicles = myemployee.getVehicle();
         myvehicles.remove(vehicle);
-        userDatabase.daoObjct().update(myemployee);
-        Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+        employeeDB.daoObjct().update(myemployee);
+        Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
         myaaraylist.remove(position);
         notifyDataSetChanged();
+
     }
 //    public void deleteItem(int position) {
 //

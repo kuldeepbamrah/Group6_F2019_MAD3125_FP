@@ -36,48 +36,48 @@ public class EmployeeDetailActivity extends AppCompatActivity {
     int x;
 
 
-    @Override
-    protected void onResume() {
-
-        final Employee myemp = getIntent().getParcelableExtra("empobject");
-        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
-        List<Employee> employees = employeeDB.daoObjct().getDefault();
-        x = employees.indexOf(myemp);
-        x = getIntent().getIntExtra("empindex",0);
-        //Toast.makeText(this,"onResume"+x,Toast.LENGTH_SHORT).show();
-
-        employeetemp = employees.get(x);
-        List<Vehicle> vehicles = myemp.getVehicle();
-
-            RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
-            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
-          vehicleDataAdapter.setMyaaraylist(vehicles);
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-            recyclerView1.setLayoutManager(layoutManager);
-            recyclerView1.setAdapter(vehicleDataAdapter);
-
-
-        ItemTouchHelper itemTouchHelper = new
-                ItemTouchHelper(new SwipeToDeleteCallbackForVehicle(vehicleDataAdapter));
-        itemTouchHelper.attachToRecyclerView(recyclerView1);
-
-            final EmployeeDB uData = EmployeeDB.getInstance(this);
-
-
-            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
-                @Override
-                public void onChanged(@Nullable Employee employee) {
-                    List<Vehicle> bills = employee.getVehicle();
-                    vehicleDataAdapter.setMyaaraylist(bills);
-                    vehicleDataAdapter.setMyemployee(employeetemp);
-                    vehicleDataAdapter.notifyDataSetChanged();
-                }
-            });
-
-        super.onResume();
-
-
-    }
+//    @Override
+//    protected void onResume() {
+//
+//        final Employee myemp = getIntent().getParcelableExtra("empobject");
+//        EmployeeDB employeeDB = EmployeeDB.getInstance(this);
+//        List<Employee> employees = employeeDB.daoObjct().getDefault();
+//        x = employees.indexOf(myemp);
+//        x = getIntent().getIntExtra("empindex",0);
+//        //Toast.makeText(this,"onResume"+x,Toast.LENGTH_SHORT).show();
+//
+//        employeetemp = employees.get(x);
+//        List<Vehicle> vehicles = myemp.getVehicle();
+//
+//            RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
+//            final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
+//          vehicleDataAdapter.setMyaaraylist(vehicles);
+//            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//            recyclerView1.setLayoutManager(layoutManager);
+//            recyclerView1.setAdapter(vehicleDataAdapter);
+//
+//
+//        ItemTouchHelper itemTouchHelper = new
+//                ItemTouchHelper(new SwipeToDeleteCallbackForVehicle(vehicleDataAdapter));
+//        itemTouchHelper.attachToRecyclerView(recyclerView1);
+//
+//            final EmployeeDB uData = EmployeeDB.getInstance(this);
+//
+//
+//            uData.daoObjct().getCurrentUserDetails(myemp.getId()).observe(this, new Observer<Employee>() {
+//                @Override
+//                public void onChanged(@Nullable Employee employee) {
+//                    List<Vehicle> bills = employee.getVehicle();
+//                    vehicleDataAdapter.setMyaaraylist(bills);
+//                    vehicleDataAdapter.setMyemployee(employeetemp);
+//                    vehicleDataAdapter.notifyDataSetChanged();
+//                }
+//            });
+//
+//        super.onResume();
+//
+//
+//    }
 
 
 
@@ -171,6 +171,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
             RecyclerView recyclerView1 = findViewById(R.id.recycler_vehicle);
             final VehicleDataAdapter vehicleDataAdapter = new VehicleDataAdapter(this);
             vehicleDataAdapter.setMyaaraylist(vehicles);
+            vehicleDataAdapter.setMyemployee(myemp);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             recyclerView1.setLayoutManager(layoutManager);
             recyclerView1.setAdapter(vehicleDataAdapter);
@@ -188,6 +189,7 @@ public class EmployeeDetailActivity extends AppCompatActivity {
                 public void onChanged(@Nullable Employee employee) {
                     List<Vehicle> bills = employee.getVehicle();
                     vehicleDataAdapter.setMyaaraylist(bills);
+                    vehicleDataAdapter.setMyemployee(employee);
                     vehicleDataAdapter.notifyDataSetChanged();
                 }
             });
