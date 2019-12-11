@@ -134,7 +134,6 @@ public class VehicleDataAdapter extends RecyclerView.Adapter<VehicleDataAdapter.
 
         Vehicle vehicle = myaaraylist.get(position);
         EmployeeDB employeeDB = EmployeeDB.getInstance(getContext());
-        List<Employee> employees = employeeDB.daoObjct().getDefault();
         List<Vehicle> myvehicles = myemployee.getVehicle();
         myvehicles.remove(vehicle);
         employeeDB.daoObjct().update(myemployee);
